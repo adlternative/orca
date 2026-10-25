@@ -1,4 +1,39 @@
 {
+  "cloudTasks": {
+    "newTask": "Nueva tarea en la nube",
+    "launchDescription": "Describe el trabajo. El agente lo ejecuta en la nube, sin crear un espacio local.",
+    "task": "¿Qué debe hacer el agente?",
+    "promptPlaceholder": "Corregir un error, investigar un problema o preparar una solicitud de cambios…",
+    "project": "Proyecto",
+    "unassigned": "Sin proyecto",
+    "provider": "Proveedor de nube",
+    "notConnected": "Sin conectar",
+    "connectFirst": "Conecta este proveedor en Configuración → Integraciones para iniciar una tarea.",
+    "openSettings": "Abrir configuración",
+    "retry": "Reintentar",
+    "noAgents": "No hay agentes disponibles",
+    "noEnvironments": "No hay entornos disponibles",
+    "repositoryPrefill": "Repositorio del proyecto: {{url}}",
+    "repositoryAuth": "Este proveedor necesita un token del repositorio. Añádelo en Opciones avanzadas.",
+    "advanced": "Opciones avanzadas",
+    "startTask": "Iniciar tarea en la nube",
+    "catalogFailed": "No se pudieron cargar las opciones. Revisa la conexión y reintenta.",
+    "uncertain": "Se perdió la respuesta. La tarea podría existir ya. Revisa la lista antes de iniciar otra.",
+    "firstTurnFailed": "La tarea se creó, pero no se envió el primer mensaje. Continúa abajo; no crees otra tarea.",
+    "cloudRunTarget": "Agente en la nube",
+    "cloudRunDetail": "Ejecutar sin espacio local",
+    "validation": {
+      "agent": "Elige un agente.",
+      "environment": "Elige un entorno.",
+      "prompt": "Describe la tarea primero.",
+      "rubric": "Añade criterios de aceptación.",
+      "iterations": "Las iteraciones deben estar entre 1 y 20.",
+      "url": "Usa una URL HTTPS del repositorio.",
+      "token": "Añade un token en Opciones avanzadas o elimina el repositorio.",
+      "tokenFormat": "Introduce un token de GitHub válido.",
+      "generic": "Revisa las opciones."
+    }
+  },
   "app": {
     "recoverableError": {
       "rootTitle": "Orca tuvo un error de renderizado.",
@@ -5277,6 +5312,51 @@
           "3b7ea51793": "Borrar búsqueda",
           "7f1c2e94a5": "El texto de búsqueda es demasiado largo: el tablero no está filtrado",
           "9a4d0f6b21": "Demasiado largo"
+        },
+        "cloud": {
+          "sessions": {
+            "empty": "No hay sesiones en la nube activas.",
+            "refresh": "Actualizar",
+            "stale": "Mostrando el último estado conocido. {{reason}}",
+            "state": {
+              "ended": "Finalizada",
+              "idle": "Inactiva",
+              "unverifiable": "No verificable",
+              "working": "En curso",
+              "blocked": "Requiere aprobación"
+            },
+            "title": "Sesiones en la nube",
+            "toggle": "Mostrar u ocultar sesiones en la nube",
+            "untitled": "Sesión sin título",
+            "failure": {
+              "rejected": "{{provider}} rechazó la credencial guardada. Actualízala en Ajustes → Integraciones.",
+              "unreachable": "No se puede acceder a {{provider}}. Comprueba la red y vuelve a intentarlo.",
+              "notConfigured": "Conecta {{provider}} en Ajustes → Integraciones.",
+              "malformed": "{{provider}} devolvió una respuesta inesperada.",
+              "unsupported": "Este host aún no admite sesiones de agentes en la nube.",
+              "notFound": "Esta sesión ya no existe en {{provider}}; lo más probable es que se eliminara allí."
+            },
+            "openConsole": "Abrir la consola de {{provider}}",
+            "openSession": "Abrir {{value0}} ({{value1}})",
+            "outcome": {
+              "met": "Criterios cumplidos",
+              "notMet": "Criterios no cumplidos"
+            },
+            "newSession": "Nueva sesión en la nube",
+            "needYou": "{{value0}} por atender",
+            "moreActions": "Más acciones de sesión en la nube",
+            "showFewer": "Mostrar menos",
+            "showMore": "Mostrar {{value0}} más",
+            "search": "Buscar sesiones en la nube",
+            "searchPlaceholder": "Título o id de sesión",
+            "clearSearch": "Borrar búsqueda",
+            "searching": "Buscando…",
+            "noMatch": "Ninguna sesión coincide.",
+            "searchTruncated": "Solo se buscaron las sesiones recientes; afina la consulta.",
+            "retry": "Reintentar",
+            "allProviders": "Todas",
+            "filterProvider": "Mostrar solo sesiones de {{provider}}"
+          }
         }
       },
       "shared": {
@@ -6270,7 +6350,9 @@
           "3ba07f933b": "Conecta issue trackers que Orca puede usar para explorar tareas e iniciar espacios de trabajo con contexto vinculado.",
           "70e885705b": "Proveedores de tareas",
           "1683acbac4": "Conecta los hosts de código que Orca puede usar para pull requests, merge requests, checks y estado de revisión.",
-          "298c65ecac": "Proveedores de revisión"
+          "298c65ecac": "Proveedores de revisión",
+          "cloudAgents": "Agentes en la nube",
+          "cloudAgentsDescription": "Conecta entornos de agentes alojados que Orca puede supervisar junto con los agentes locales."
         },
         "KagiSessionLinkForm": {
           "92f0b4e472": "Borrar",
@@ -10316,6 +10398,66 @@
           "saveFailed": "No se pudieron guardar los valores predeterminados de visibilidad.",
           "updateServer": "Actualiza este servidor para configurar los valores predeterminados de las fuentes.",
           "updateServerDefaults": "Actualiza este servidor para configurar los valores predeterminados de visibilidad."
+        },
+        "qoder": {
+          "cloud": {
+            "credentials": {
+              "dialog": {
+                "accessToken": "Token de acceso (PAT o SAT)",
+                "baseUrl": "URL base de la API (opcional)",
+                "cancel": "Cancelar",
+                "connect": "Conectar",
+                "connectFailed": "Error de conexión",
+                "description": "Usa un token de cuenta personal o de servicio de Qoder para supervisar sesiones de agentes en la nube desde Orca. Orca lo verifica antes de guardarlo.",
+                "docsLink": "Guía de inicio de Qoder Cloud Agents",
+                "environmentManaged": "Qoder Cloud ya está configurado mediante las variables de entorno ORCA_QODER_*, que tienen prioridad. Elimínalas para guardar una credencial en Orca.",
+                "hint": "Qoder CN y Qoder internacional son productos distintos con tokens distintos; ajusta la URL base a la consola que emitió tu token.",
+                "storageNote": "Se guarda en este equipo, cifrado cuando el llavero del sistema está disponible. Las variables de entorno ORCA_QODER_* siempre tienen prioridad sobre lo que guardes aquí.",
+                "title": "Conectar Qoder Cloud Agents",
+                "verifying": "Verificando…",
+                "useCn": "Usar el punto de conexión de Qoder CN"
+              }
+            },
+            "integration": {
+              "card": {
+                "connect": "Conectar",
+                "connected": "Conectado",
+                "defaultHost": "api.qoder.com",
+                "description": "Supervisa sesiones de agentes que se ejecutan en entornos aislados en la nube gestionados por Qoder.",
+                "disconnect": "Desconectar Qoder Cloud",
+                "disconnectFailed": "No se pudo eliminar la credencial de Qoder Cloud guardada.",
+                "edit": "Editar token",
+                "envManaged": "Configurado mediante variables de entorno. Elimina ORCA_QODER_* para gestionar esta credencial en Orca.",
+                "notConfigured": "Conéctate con un token de cuenta personal o de servicio de Qoder. ORCA_QODER_ACCESS_TOKEN también funciona y tiene prioridad.",
+                "notConnected": "No conectado",
+                "statusLoadFailed": "No se pudo comprobar si hay una credencial de Qoder Cloud guardada.",
+                "storedCredential": "Guardado en Orca en este equipo. Las sesiones aparecen en la barra lateral bajo «Sesiones en la nube»."
+              }
+            }
+          }
+        },
+        "cloudAgent": {
+          "integration": {
+            "description": "Sigue las sesiones de agente que se ejecutan en los entornos cloud gestionados por {{provider}}.",
+            "connected": "Conectado",
+            "notConnected": "Sin conectar",
+            "connect": "Conectar",
+            "edit": "Editar token",
+            "disconnect": "Desconectar {{provider}}",
+            "disconnectFailed": "No se pudo eliminar la credencial de {{provider}} guardada.",
+            "statusLoadFailed": "No se pudo comprobar la credencial de {{provider}} guardada.",
+            "envManaged": "Configurado mediante variables de entorno. Quita {{vars}} para gestionar esta credencial en Orca.",
+            "stored": "Guardado en Orca en este equipo. Sus sesiones aparecen junto a las demás sesiones cloud.",
+            "notConfigured": "Conecta con una clave de API de {{provider}}.",
+            "dialogTitle": "Conectar {{provider}}",
+            "tokenLabel": "Clave de API",
+            "baseUrlLabel": "URL base de la API (opcional)",
+            "storageNote": "Se guarda en este equipo con cifrado cuando el llavero del sistema está disponible.",
+            "connectFailed": "No se pudo verificar esa clave con {{provider}}.",
+            "cancel": "Cancelar",
+            "verifying": "Verificando...",
+            "vendorCli": "Usa la sesión de la CLI de {{provider}} ya iniciada en este equipo."
+          }
         }
       },
       "right": {
@@ -14174,6 +14316,22 @@
           "noProjects": "No hay proyectos configurados en {host}. Agregue uno allí o elija otro host.",
           "updateRequired": "Actualice el servidor de Orca en {hosts} para almacenar automatizaciones allí.",
           "move": "Al guardar se crea esta automatización en {host} y se eliminan la original y su historial de ejecuciones."
+        },
+        "cloud": {
+          "schedule": {
+            "host": "Nube",
+            "openConsole": "Abrir {{value0}} en la consola del proveedor",
+            "noRuns": "Todavía no hay ejecuciones.",
+            "openSession": "Abrir sesión"
+          },
+          "detail": {
+            "schedule": "Programación",
+            "agent": "Agente",
+            "environment": "Entorno",
+            "nextRuns": "Próximas",
+            "prompt": "Prompt",
+            "runs": "Ejecuciones recientes"
+          }
         }
       },
       "agent": {
@@ -14560,6 +14718,121 @@
         "description": "Anida este espacio de trabajo bajo otro en la barra lateral. No cambia la rama base.",
         "searchPlaceholder": "Buscar espacios de trabajo...",
         "noMatches": "No hay coincidencias."
+      },
+      "cloud": {
+        "sessions": {
+          "drawer": {
+            "title": "Sesión en la nube",
+            "untitled": "Sesión sin título",
+            "blocked": "Esperando aprobación",
+            "working": "En curso",
+            "idle": "Inactiva",
+            "openConsole": "Abrir en Qoder Cloud",
+            "close": "Cerrar",
+            "live": "● en vivo",
+            "reconnecting": "reconectando…",
+            "blockedHintReadOnly": "El agente está esperando la aprobación de una llamada a herramienta. Apruébala en la consola del proveedor; Orca muestra esta sesión en modo de solo lectura.",
+            "unsupported": "Este host aún no puede leer las transcripciones de sesiones en la nube. Actualiza Orca en el host emparejado o abre la sesión en la consola del proveedor.",
+            "archive": "Archivar sesión",
+            "archiveConfirm": "Archivar",
+            "archiveConfirmShort": "Confirmar",
+            "actions": "Acciones de la sesión",
+            "archiveTitle": "¿Archivar esta sesión?",
+            "archiveBody": "El proveedor dejará de aceptar trabajo nuevo en ella. El historial sigue disponible en la consola de Qoder.",
+            "archiveCancel": "Cancelar",
+            "ended": "Finalizada",
+            "retry": "Reintentar"
+          },
+          "outcome": {
+            "pending": "Sin iniciar",
+            "running": "Trabajando hacia los criterios",
+            "evaluating": "Evaluando",
+            "needsRevision": "Necesita revisión",
+            "satisfied": "Criterios cumplidos",
+            "maxIterations": "No cumplidos: límite de iteraciones alcanzado",
+            "failed": "No se pueden satisfacer",
+            "interrupted": "Interrumpido",
+            "progress": "iteración {{value0}} de {{value1}}",
+            "label": "Criterios de aceptación"
+          },
+          "artifact": {
+            "open": "Abrir {{value0}}"
+          },
+          "artifacts": {
+            "label": "Archivos entregados",
+            "count": "{{value0}} archivos entregados"
+          },
+          "controls": {
+            "busy": "La sesión está procesando un turno. Espera a que termine o cancélalo.",
+            "dismiss": "Descartar",
+            "approvePrompt": "Aprueba la llamada a herramienta pendiente para que el agente continúe.",
+            "deny": "Denegar",
+            "approve": "Aprobar",
+            "placeholder": "Envía un mensaje de seguimiento a esta sesión en la nube",
+            "busyPlaceholder": "El agente está trabajando; espera o cancela el turno",
+            "messageLabel": "Mensaje para la sesión en la nube",
+            "cancel": "Cancelar turno",
+            "send": "Enviar mensaje",
+            "closed": "Esta sesión ya no acepta mensajes.",
+            "blockedPlaceholder": "Aprueba la llamada de herramienta de arriba para continuar",
+            "unverifiedPlaceholder": "El estado de la sesión no está verificado; aún no se puede enviar",
+            "endedPlaceholder": "La sesión ha terminado; no admite mensajes nuevos"
+          },
+          "new": {
+            "title": "Nueva sesión en la nube",
+            "description": "El agente se ejecuta en un entorno aislado que gestiona el proveedor. Orca lo observa; nada se ejecuta en este equipo.",
+            "agent": "Agente",
+            "environment": "Entorno",
+            "name": "Nombre (opcional)",
+            "prompt": "Prompt",
+            "promptPlaceholder": "¿Qué debe hacer el agente?",
+            "advanced": "Repositorio, memoria, criterios",
+            "cancel": "Cancelar",
+            "create": "Iniciar sesión",
+            "loading": "Leyendo el catálogo…",
+            "notConfigured": "Conecta primero Qoder Cloud Agents en Ajustes → Integraciones.",
+            "promptFailed": "La sesión se creó pero su primer turno no arrancó: {{value0}}",
+            "mountRepo": "Montar un repositorio de GitHub",
+            "repoUrl": "URL del repositorio",
+            "mountPath": "Ruta de montaje",
+            "repoToken": "Token de GitHub",
+            "repoTokenNote": "Usa un token de permisos finos: Contents de lectura y Pull requests de escritura solo si el agente debe hacer push. Orca solo lo usa en esta petición de sesión.",
+            "memory": "Almacenes de memoria",
+            "readWrite": "lectura y escritura",
+            "readOnly": "solo lectura",
+            "vaults": "Cajas fuertes",
+            "grade": "Evaluar el resultado con los criterios",
+            "rubric": "Criterios de aceptación",
+            "rubricPlaceholder": "- /data/report.md existe\n- Cada afirmación cita una fuente",
+            "iterations": "Iteraciones máx.",
+            "promptNote": "Si montas un repositorio abajo, el agente trabaja en él.",
+            "repoTokenLink": "Crear un token",
+            "searchMemory": "Buscar almacenes de memoria",
+            "memoryAccessLabel": "acceso a {{value0}}",
+            "version": "v{{value0}}",
+            "repoTokenPlaceholder": "ghp_…",
+            "repoUrlPlaceholder": "https://github.com/your-org/your-repo",
+            "mountPathPlaceholder": "/data/workspace/your-repo",
+            "network": "Red {{value0}}",
+            "packageManagersAllowed": "gestores de paquetes permitidos",
+            "packageManagersBlocked": "sin gestores de paquetes",
+            "allowedHosts": "{{value0}} hosts permitidos"
+          },
+          "unsupportedHost": "Este host aún no admite sesiones de agentes en la nube.",
+          "model": {
+            "title": "Modelo de esta sesión",
+            "auto": "Automático",
+            "switch": "Cambiar de modelo, actualmente {{model}}",
+            "loading": "Cargando modelos…",
+            "empty": "Esta cuenta no ofrece ningún modelo.",
+            "vision": "Visión",
+            "effort": "Esfuerzo de razonamiento",
+            "useDefault": "Usar el valor predeterminado del modelo"
+          },
+          "failure": {
+            "generic": "No se puede acceder a {{provider}}. Comprueba la red y vuelve a intentarlo."
+          }
+        }
       }
     },
     "i18n": {
@@ -14734,7 +15007,16 @@
         "allow": "Permitir",
         "deny": "Denegar"
       },
-      "launchPromptNotDelivered": "No entregado — revisa la terminal"
+      "launchPromptNotDelivered": "No entregado — revisa la terminal",
+      "notices": {
+        "acceptanceCriteria": "Criterios de aceptación",
+        "acceptanceCriteriaLimit": "hasta {{value0}} iteraciones",
+        "outcomeIteration": "iteración {{value0}}",
+        "cloudSessionError": "Error de sesión",
+        "cloudSessionErrorExhausted": "no se reintentará automáticamente",
+        "cloudSessionUpdated": "Configuración del agente actualizada",
+        "cloudSessionUpdatedTools": "{{value0}} herramientas"
+      }
     },
     "tab": {
       "bar": {

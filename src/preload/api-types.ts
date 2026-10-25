@@ -32,6 +32,7 @@ import type { GithubPullRequestApi } from './api/github-pull-request-api'
 import type { GithubWorkItemApi } from './api/github-work-item-api'
 import type { GitLabApi } from './api/gitlab-api'
 import type { BitbucketApi, HostedReviewApi } from './api/hosted-review-api'
+import type { CloudAgentApi } from './api/cloud-agent-api'
 import type { JiraApi } from './api/jira-api'
 import type { LinearApi } from './api/linear-api'
 import type { MobileApi } from './api/mobile-api'
@@ -88,6 +89,9 @@ export type PreloadApi = {
   hostedReview: HostedReviewApi
   gl: GitLabApi
   bitbucket: BitbucketApi
+  qoderCloud: CloudAgentApi
+  /** Binds the generic cloud-agent channels to any registered provider. */
+  cloudAgents: (provider: string) => CloudAgentApi
   linear: LinearApi
   jira: JiraApi
   starNag: StarNagApi

@@ -21,6 +21,9 @@ export type AppChromeLayout = ReturnType<typeof useAppChromeLayout>
  */
 export function useAppChromeLayout() {
   const activeView = useAppStore((s) => s.activeView)
+  const cloudSessionActive = useAppStore(
+    (s) => s.activeView === 'terminal' && s.openCloudSessionId != null
+  )
   const sidebarOpen = useAppStore((s) => s.sidebarOpen)
   const rightSidebarOpen = useAppStore((s) => s.rightSidebarOpen)
   const rightSidebarTab = useAppStore((s) => s.rightSidebarTab)
@@ -70,7 +73,10 @@ export function useAppChromeLayout() {
     hasActivePendingCreation: activePendingCreationExists
   })
   const workspaceChromeActive =
-    activeView === 'terminal' && activeWorktreeId !== null && !creationLayoutActive
+    activeView === 'terminal' &&
+    activeWorktreeId !== null &&
+    !creationLayoutActive &&
+    !cloudSessionActive
   const hasTabBar = tabCount >= 2
   // Activity/Space are full-page navigation surfaces (like Settings), so the worktree sidebar is hidden there.
   const showSidebar =
@@ -119,6 +125,7 @@ export function useAppChromeLayout() {
 
   return {
     activeView,
+    cloudSessionActive,
     activeWorktreeId,
     activePendingCreationId,
     activeTabCanExpand,
@@ -134,7 +141,8 @@ export function useAppChromeLayout() {
     shouldMountTerminalWorkbench,
     showSidebar,
     // Full-page navigation surfaces own the whole content area, so suppress right-sidebar controls.
-    showRightSidebarControls: !creationLayoutActive && canShowRightSidebarForView(activeView),
+    showRightSidebarControls:
+      !cloudSessionActive && !creationLayoutActive && canShowRightSidebarForView(activeView),
     showTitlebarAppName: settings?.showTitlebarAppName !== false,
     showTitlebarExpandButton: workspaceChromeActive && !hasTabBar && effectiveActiveTabExpanded,
     sidebarOpen,

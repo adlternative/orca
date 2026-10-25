@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import type { Project } from '../../../shared/project-types'
 import type { Repo } from '../../../shared/repo-types'
-import { resolveProjectCloneUrlPrefill } from './project-clone-url-prefill'
+import { cloudRepositoryPrefill, resolveProjectCloneUrlPrefill } from './project-clone-url-prefill'
 
 function project(sourceRepoIds: string[]): Project {
   return { id: 'project-orca', sourceRepoIds } as unknown as Project
@@ -12,6 +12,19 @@ function repo(id: string, remoteUrl: string): Repo {
 }
 
 describe('resolveProjectCloneUrlPrefill', () => {
+  it('converts hosted SSH remotes for cloud launch without guessing private hosts or ports', () => {
+    expect(cloudRepositoryPrefill('git@github.com:acme/app.git')).toBe(
+      'https://github.com/acme/app.git'
+    )
+    expect(cloudRepositoryPrefill('ssh://git@gitlab.com/acme/app.git')).toBe(
+      'https://gitlab.com/acme/app.git'
+    )
+    expect(cloudRepositoryPrefill('https://github.com/acme/app.git')).toBe(
+      'https://github.com/acme/app.git'
+    )
+    expect(cloudRepositoryPrefill('ssh://git@gitlab.com:2222/acme/app.git')).toBe('')
+    expect(cloudRepositoryPrefill('git@private-host:acme/app.git')).toBe('')
+  })
   it('strips an embedded token so it is never cloned onto another host', () => {
     // The clone runs on the target host and would persist this into .git/config.
     const prefill = resolveProjectCloneUrlPrefill(

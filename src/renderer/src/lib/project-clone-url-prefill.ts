@@ -1,6 +1,23 @@
+import { normalizeGitRemoteUrl } from '../../../shared/git-remote-identity'
 import { stripCredentialsFromMessage } from '../../../shared/git-remote-error'
 import type { Project } from '../../../shared/project-types'
 import type { Repo } from '../../../shared/repo-types'
+
+/** Cloud providers cannot reuse the local machine's SSH credentials. */
+export function cloudRepositoryPrefill(remote: string): string {
+  if (remote.startsWith('https://')) {
+    return remote
+  }
+  if (
+    /^(?:git@(?:github\.com|gitlab\.com|bitbucket\.org):|ssh:\/\/git@(?:github\.com|gitlab\.com|bitbucket\.org)\/)/.test(
+      remote
+    )
+  ) {
+    const key = normalizeGitRemoteUrl(remote)
+    return key ? `https://${key}.git` : ''
+  }
+  return ''
+}
 
 /**
  * The clone URL to seed "Clone from URL" with, taken from the project's own

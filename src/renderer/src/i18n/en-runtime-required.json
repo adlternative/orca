@@ -351,6 +351,16 @@
           }
         }
       },
+      "cloud": {
+        "sessions": {
+          "drawer": {
+            "archiveConfirm": "Confirm archive",
+            "archiveConfirmShort": "Confirm",
+            "blockedHintReadOnly": "The agent is waiting for a tool call to be approved. Approve it in the provider console; Orca shows this session read-only.",
+            "live": "● live"
+          }
+        }
+      },
       "contextual": {
         "tours": {
           "ContextualTourControl": {
@@ -1985,6 +1995,11 @@
                 }
               }
             }
+          }
+        },
+        "cloud": {
+          "sessions": {
+            "openSession": "Open {{value0}} in Qoder Cloud ({{value1}})"
           }
         },
         "index": {

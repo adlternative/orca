@@ -6,6 +6,9 @@ import {
   GitLabIntegrationCard
 } from './source-control-integration-cards'
 import { JiraIntegrationCard, LinearIntegrationCard } from './task-tracker-integration-cards'
+import { CloudAgentIntegrationCard } from './cloud-agent-integration-card'
+import { QoderCloudIntegrationCard } from './qoder-cloud-integration-card'
+import { listCloudAgentProviders } from '../../../../shared/cloud-agent-provider-registry'
 import { useIntegrationProviderStatusRefresh } from './use-integration-provider-status-refresh'
 import { translate } from '@/i18n/i18n'
 export { getIntegrationsPaneSearchEntries } from './integrations-search'
@@ -51,6 +54,31 @@ export function IntegrationsPane(): React.JSX.Element {
         <div className="space-y-3">
           <LinearIntegrationCard />
           <JiraIntegrationCard />
+        </div>
+      </section>
+
+      <section className="space-y-3">
+        <div className="space-y-1">
+          <h3 className="text-sm font-semibold text-foreground">
+            {translate('auto.components.settings.IntegrationsPane.cloudAgents', 'Cloud agents')}
+          </h3>
+          <p className="text-xs text-muted-foreground">
+            {translate(
+              'auto.components.settings.IntegrationsPane.cloudAgentsDescription',
+              'Connect hosted agent runtimes Orca can watch alongside local agents.'
+            )}
+          </p>
+        </div>
+        <div className="space-y-3">
+          {/* Why the loop: one card per configured vendor. Qoder keeps a bespoke card for its
+              CN endpoint and token docs; everything else uses the generic one. */}
+          {listCloudAgentProviders().map((provider) =>
+            provider.id === 'qoder-cloud' ? (
+              <QoderCloudIntegrationCard key={provider.id} />
+            ) : (
+              <CloudAgentIntegrationCard key={provider.id} provider={provider} />
+            )
+          )}
         </div>
       </section>
     </div>

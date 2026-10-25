@@ -98,6 +98,11 @@ export type UISlicePreferences = {
   /** Transient: the in-window Agent Dashboard companion drawer is open. Not persisted. */
   agentDashboardDrawerOpen: boolean
   setAgentDashboardDrawerOpen: (open: boolean) => void
+  /** Transient: cloud agent session shown in the companion transcript drawer. Not persisted. */
+  openCloudSessionId: string | null
+  openCloudSessionProvider: string | null
+  cloudSessionLaunchWarning: string | null
+  setOpenCloudSessionId: (sessionId: string | null, provider?: string) => void
   statusBarItems: StatusBarItem[]
   toggleStatusBarItem: (item: StatusBarItem) => void
   statusBarVisible: boolean

@@ -38,6 +38,14 @@ delete process.env.ELECTRON_RUN_AS_NODE
 
 const require = createRequire(import.meta.url)
 const repoRoot = path.resolve(import.meta.dirname, '../..')
+
+// Why: local dev credentials (ORCA_QODER_ACCESS_TOKEN, …) belong in .env.local, which is
+// gitignored — hardcoding a path to someone's scratch key file would break on the next machine.
+// loadEnvFile never overrides an already-exported variable, so an explicit `ORCA_…=… pnpm dev` wins.
+const envLocalPath = path.join(repoRoot, '.env.local')
+if (existsSync(envLocalPath)) {
+  process.loadEnvFile(envLocalPath)
+}
 const STABLE_NAME_FLAG = '--stable-name'
 const rawForwardedArgs = process.argv.slice(2)
 // Why: keep an escape hatch for tools that key off Electron's stock app name.

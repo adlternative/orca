@@ -17,6 +17,7 @@ export type RunTargetRowModel =
   | { key: string; kind: 'needs-setup'; option: NeedsSetupProjectHostOption }
   | { key: typeof RUN_TARGET_RECIPES_KEY; kind: 'recipes' }
   | { key: typeof RUN_TARGET_ADD_HOST_KEY; kind: 'add-host' }
+  | { key: 'cloud-agent'; kind: 'cloud' }
 
 export function getEphemeralVmLabel(): string {
   return translate(
@@ -62,12 +63,14 @@ export function buildRunTargetRows({
   hostOptions,
   recipes,
   query,
-  hasAddHost
+  hasAddHost,
+  hasCloud = false
 }: {
   hostOptions: readonly ProjectHostSetupOption[]
   recipes: readonly EphemeralVmRecipeOption[]
   query: string
   hasAddHost: boolean
+  hasCloud?: boolean
 }): { rows: RunTargetRowModel[]; matchedRecipes: EphemeralVmRecipeOption[] } {
   const trimmed = query.trim().toLowerCase()
   const hostMatches = (option: ProjectHostSetupOption): boolean =>
@@ -102,6 +105,12 @@ export function buildRunTargetRows({
   ]
   if (matchedRecipes.length > 0) {
     rows.push({ key: RUN_TARGET_RECIPES_KEY, kind: 'recipes' })
+  }
+  if (
+    hasCloud &&
+    (!trimmed || matches(`cloud ${translate('cloudTasks.cloudRunTarget', 'Cloud agent')}`, trimmed))
+  ) {
+    rows.push({ key: 'cloud-agent', kind: 'cloud' })
   }
   if (hasAddHost) {
     rows.push({ key: RUN_TARGET_ADD_HOST_KEY, kind: 'add-host' })

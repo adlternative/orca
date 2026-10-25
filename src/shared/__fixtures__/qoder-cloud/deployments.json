@@ -1,0 +1,148 @@
+{
+  "data": [
+    {
+      "agent": {
+        "id": "agent_fixture000003",
+        "type": "agent",
+        "version": 3
+      },
+      "archived_at": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "description": "Synthetic scheduled task for parser tests.",
+      "environment_id": "env_fixture000002",
+      "environment_variables": {},
+      "id": "dep_fixture000002",
+      "initial_events": [
+        {
+          "content": [
+            {
+              "text": "Summarize updates from https://example.com/news/.\nUse the example release notes.",
+              "type": "text"
+            }
+          ],
+          "type": "user.message"
+        }
+      ],
+      "metadata": {
+        "source": "synthetic-fixture"
+      },
+      "name": "weekly-example",
+      "paused_reason": null,
+      "resources": [],
+      "schedule": {
+        "expression": "0 8 * * 1",
+        "timezone": "UTC",
+        "type": "cron",
+        "upcoming_runs_at": [
+          "2026-01-05T08:00:00Z",
+          "2026-01-12T08:00:00Z",
+          "2026-01-19T08:00:00Z",
+          "2026-01-26T08:00:00Z",
+          "2026-02-02T08:00:00Z"
+        ]
+      },
+      "status": "active",
+      "type": "deployment",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "vault_ids": []
+    },
+    {
+      "agent": {
+        "id": "agent_fixture000002",
+        "type": "agent",
+        "version": 1
+      },
+      "archived_at": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "description": "Synthetic scheduled task for parser tests.",
+      "environment_id": "env_fixture000003",
+      "environment_variables": {},
+      "id": "dep_fixture000001",
+      "initial_events": [
+        {
+          "content": [
+            {
+              "text": "Summarize updates from https://example.com/news/.\nUse the example release notes.",
+              "type": "text"
+            }
+          ],
+          "type": "user.message"
+        }
+      ],
+      "metadata": {
+        "source": "synthetic-fixture"
+      },
+      "name": "daily-example",
+      "paused_reason": null,
+      "resources": [],
+      "schedule": {
+        "expression": "0 10 * * *",
+        "last_run_at": "2026-01-01T10:00:00Z",
+        "timezone": "UTC",
+        "type": "cron",
+        "upcoming_runs_at": [
+          "2026-01-05T10:00:00Z",
+          "2026-01-06T10:00:00Z",
+          "2026-01-07T10:00:00Z",
+          "2026-01-08T10:00:00Z",
+          "2026-01-09T10:00:00Z"
+        ]
+      },
+      "status": "active",
+      "type": "deployment",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "vault_ids": []
+    },
+    {
+      "agent": {
+        "id": "agent_fixture000002",
+        "type": "agent",
+        "version": 1
+      },
+      "archived_at": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "description": "Synthetic scheduled task for parser tests.",
+      "environment_id": "env_fixture000003",
+      "environment_variables": {},
+      "id": "dep_fixture000003",
+      "initial_events": [
+        {
+          "content": [
+            {
+              "text": "Summarize updates from https://example.com/news/.\nUse the example release notes.",
+              "type": "text"
+            }
+          ],
+          "type": "user.message"
+        }
+      ],
+      "metadata": {
+        "source": "synthetic-fixture"
+      },
+      "name": "daily-review",
+      "paused_reason": null,
+      "resources": [],
+      "schedule": {
+        "expression": "0 14 * * *",
+        "last_run_at": "2026-01-01T10:00:00Z",
+        "timezone": "UTC",
+        "type": "cron",
+        "upcoming_runs_at": [
+          "2026-01-05T14:00:00Z",
+          "2026-01-06T14:00:00Z",
+          "2026-01-07T14:00:00Z",
+          "2026-01-08T14:00:00Z",
+          "2026-01-09T14:00:00Z"
+        ]
+      },
+      "status": "active",
+      "type": "deployment",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "vault_ids": []
+    }
+  ],
+  "first_id": "dep_fixture000002",
+  "has_more": true,
+  "last_id": "dep_fixture000003",
+  "next_page": "dep_fixture000003"
+}

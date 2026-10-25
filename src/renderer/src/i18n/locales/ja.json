@@ -1,4 +1,39 @@
 {
+  "cloudTasks": {
+    "newTask": "クラウドタスクを作成",
+    "launchDescription": "作業を説明してください。ローカルワークスペースを作らず、クラウドで実行します。",
+    "task": "Agent に何を依頼しますか？",
+    "promptPlaceholder": "バグの修正、問題の調査、プルリクエストの準備…",
+    "project": "プロジェクト",
+    "unassigned": "プロジェクト未割り当て",
+    "provider": "クラウドプロバイダー",
+    "notConnected": "未接続",
+    "connectFirst": "設定 → 連携でこのプロバイダーを接続してから開始してください。",
+    "openSettings": "設定を開く",
+    "retry": "再試行",
+    "noAgents": "利用できる Agent がありません",
+    "noEnvironments": "利用できる環境がありません",
+    "repositoryPrefill": "プロジェクトのリポジトリ：{{url}}",
+    "repositoryAuth": "リポジトリトークンが必要です。詳細設定で入力してください。",
+    "advanced": "詳細設定",
+    "startTask": "クラウドタスクを開始",
+    "catalogFailed": "開始オプションを読み込めません。接続を確認して再試行してください。",
+    "uncertain": "応答を受信できませんでした。タスクは作成済みかもしれません。再作成前に一覧を確認してください。",
+    "firstTurnFailed": "タスクは作成されましたが、最初のメッセージは未送信です。再作成せず、下の入力欄から送信してください。",
+    "cloudRunTarget": "クラウド Agent",
+    "cloudRunDetail": "ローカルワークスペースなしで実行",
+    "validation": {
+      "agent": "Agent を選択してください。",
+      "environment": "環境を選択してください。",
+      "prompt": "まずタスクを説明してください。",
+      "rubric": "受け入れ条件を入力してください。",
+      "iterations": "反復回数は1〜20にしてください。",
+      "url": "HTTPSのリポジトリURLを使用してください。",
+      "token": "詳細設定でトークンを入力するか、リポジトリを外してください。",
+      "tokenFormat": "有効なGitHubトークンを入力してください。",
+      "generic": "開始オプションを確認してください。"
+    }
+  },
   "app": {
     "recoverableError": {
       "rootTitle": "Orca でレンダラーエラーが発生しました。",
@@ -5277,6 +5312,51 @@
           "3b7ea51793": "検索をクリア",
           "7f1c2e94a5": "検索テキストが長すぎます — ボードは絞り込まれていません",
           "9a4d0f6b21": "長すぎます"
+        },
+        "cloud": {
+          "sessions": {
+            "empty": "アクティブなクラウドセッションはありません。",
+            "refresh": "更新",
+            "stale": "最後に判明した状態を表示しています。{{reason}}",
+            "state": {
+              "ended": "終了",
+              "idle": "アイドル",
+              "unverifiable": "確認不能",
+              "working": "作業中",
+              "blocked": "承認待ち"
+            },
+            "title": "クラウドセッション",
+            "toggle": "クラウドセッションの表示を切り替え",
+            "untitled": "無題のセッション",
+            "failure": {
+              "rejected": "{{provider}} が保存された認証情報を拒否しました。設定 → 連携 で更新してください。",
+              "unreachable": "{{provider}} に接続できません。ネットワークを確認して再試行してください。",
+              "notConfigured": "設定 → 連携 で {{provider}} を接続してください。",
+              "malformed": "{{provider}} が想定外の応答を返しました。",
+              "unsupported": "このホストはまだクラウド Agent セッションに対応していません。",
+              "notFound": "このセッションは {{provider}} 上に存在しません。おそらく向こうで削除されました。"
+            },
+            "openConsole": "{{provider}} コンソールを開く",
+            "openSession": "{{value0}} を開く（{{value1}}）",
+            "outcome": {
+              "met": "基準を満たしました",
+              "notMet": "基準を満たしていません"
+            },
+            "newSession": "新しいクラウドセッション",
+            "needYou": "{{value0}} 件対応待ち",
+            "moreActions": "その他のクラウドセッション操作",
+            "showFewer": "折りたたむ",
+            "showMore": "さらに {{value0}} 件表示",
+            "search": "クラウドセッションを検索",
+            "searchPlaceholder": "タイトルまたはセッション ID",
+            "clearSearch": "検索をクリア",
+            "searching": "検索中…",
+            "noMatch": "一致するセッションはありません。",
+            "searchTruncated": "新しいセッションのみ検索しました。語句を絞ってください。",
+            "retry": "再試行",
+            "allProviders": "すべて",
+            "filterProvider": "{{provider}} のセッションのみ表示"
+          }
         }
       },
       "shared": {
@@ -6292,7 +6372,9 @@
           "3ba07f933b": "Orca がタスクの閲覧や、コンテキストを引き継いだワークスペースの作成に使える Issue トラッカーを接続します。",
           "70e885705b": "タスクプロバイダー",
           "1683acbac4": "Orca が PR、MR、チェック、レビュー状況に使えるソースホストを接続します。",
-          "298c65ecac": "レビュープロバイダー"
+          "298c65ecac": "レビュープロバイダー",
+          "cloudAgents": "クラウド Agent",
+          "cloudAgentsDescription": "Orca がローカル Agent と並べて監視できる、ホスト型 Agent ランタイムを接続します。"
         },
         "KagiSessionLinkForm": {
           "92f0b4e472": "クリア",
@@ -10316,6 +10398,66 @@
           "saveFailed": "表示設定のデフォルトを保存できませんでした。",
           "updateServer": "ソースのデフォルトを設定するには、このサーバーを更新してください。",
           "updateServerDefaults": "表示のデフォルトを設定するには、このサーバーを更新してください。"
+        },
+        "qoder": {
+          "cloud": {
+            "credentials": {
+              "dialog": {
+                "accessToken": "アクセストークン（PAT または SAT）",
+                "baseUrl": "API ベース URL（任意）",
+                "cancel": "キャンセル",
+                "connect": "接続",
+                "connectFailed": "接続に失敗しました",
+                "description": "Qoder の個人またはサービスアカウントトークンを使って、Orca からクラウド Agent セッションを監視します。保存前に Orca が検証します。",
+                "docsLink": "Qoder Cloud Agents クイックスタート",
+                "environmentManaged": "Qoder Cloud はすでに ORCA_QODER_* 環境変数で設定されており、環境変数が優先されます。Orca に資格情報を保存するには、環境変数を解除してください。",
+                "hint": "Qoder CN と Qoder 国際版は別製品でトークンも別です。トークンを発行したコンソールに合わせてベース URL を設定してください。",
+                "storageNote": "OS のキーチェーンが利用できる場合は暗号化してこのマシンに保存されます。ORCA_QODER_* 環境変数は常にここで保存した内容より優先されます。",
+                "title": "Qoder Cloud Agents に接続",
+                "verifying": "検証中…",
+                "useCn": "Qoder CN のエンドポイントを使用"
+              }
+            },
+            "integration": {
+              "card": {
+                "connect": "接続",
+                "connected": "接続済み",
+                "defaultHost": "api.qoder.com",
+                "description": "Qoder 管理のクラウドサンドボックスで実行中の Agent セッションを監視します。",
+                "disconnect": "Qoder Cloud を切断",
+                "disconnectFailed": "保存済みの Qoder Cloud 資格情報を削除できませんでした。",
+                "edit": "トークンを編集",
+                "envManaged": "環境変数で設定されています。この資格情報を Orca で管理するには ORCA_QODER_* を解除してください。",
+                "notConfigured": "Qoder の個人またはサービスアカウントトークンで接続します。ORCA_QODER_ACCESS_TOKEN も使用でき、こちらが優先されます。",
+                "notConnected": "未接続",
+                "statusLoadFailed": "保存済みの Qoder Cloud 資格情報を確認できませんでした。",
+                "storedCredential": "このマシンの Orca に保存されています。セッションはサイドバーの「クラウドセッション」に表示されます。"
+              }
+            }
+          }
+        },
+        "cloudAgent": {
+          "integration": {
+            "description": "{{provider}} が管理するクラウドサンドボックスで動作するエージェントセッションを確認します。",
+            "connected": "接続済み",
+            "notConnected": "未接続",
+            "connect": "接続",
+            "edit": "トークンを編集",
+            "disconnect": "{{provider}} を切断",
+            "disconnectFailed": "保存された {{provider}} 認証情報を削除できませんでした。",
+            "statusLoadFailed": "保存された {{provider}} 認証情報を確認できませんでした。",
+            "envManaged": "環境変数で設定されています。Orca で管理するには {{vars}} を解除してください。",
+            "stored": "このマシンの Orca に保存されています。セッションは他のクラウドセッションと並んで表示されます。",
+            "notConfigured": "{{provider}} の API キーで接続します。",
+            "dialogTitle": "{{provider}} に接続",
+            "tokenLabel": "API キー",
+            "baseUrlLabel": "API ベース URL（任意）",
+            "storageNote": "OS のキーチェーンが利用可能な場合は暗号化してこのマシンに保存されます。",
+            "connectFailed": "そのキーを {{provider}} で検証できませんでした。",
+            "cancel": "キャンセル",
+            "verifying": "確認中...",
+            "vendorCli": "このマシンで既にログイン済みの {{provider}} CLI 認証情報を使用しています。"
+          }
         }
       },
       "right": {
@@ -14174,6 +14316,22 @@
           "noProjects": "{host} にはプロジェクトが設定されていません。そこに追加するか、別のホストを選択してください。",
           "updateRequired": "{hosts} の Orca サーバーを更新すると、そこに自動化を保存できます。",
           "move": "保存すると、この自動化は {host} に作成され、元の自動化と実行履歴は削除されます。"
+        },
+        "cloud": {
+          "schedule": {
+            "host": "クラウド",
+            "openConsole": "プロバイダーのコンソールで {{value0}} を開く",
+            "noRuns": "実行はまだありません。",
+            "openSession": "セッションを開く"
+          },
+          "detail": {
+            "schedule": "スケジュール",
+            "agent": "Agent",
+            "environment": "環境",
+            "nextRuns": "次回",
+            "prompt": "プロンプト",
+            "runs": "最近の実行"
+          }
         }
       },
       "agent": {
@@ -14560,6 +14718,121 @@
         "description": "このワークスペースをサイドバー内の別のワークスペースの配下にネストします。ベースブランチは変更されません。",
         "searchPlaceholder": "ワークスペースを検索...",
         "noMatches": "一致する項目がありません。"
+      },
+      "cloud": {
+        "sessions": {
+          "drawer": {
+            "title": "クラウドセッション",
+            "untitled": "無題のセッション",
+            "blocked": "承認待ち",
+            "working": "作業中",
+            "idle": "アイドル",
+            "openConsole": "Qoder Cloud で開く",
+            "close": "閉じる",
+            "live": "● ライブ",
+            "reconnecting": "再接続中…",
+            "blockedHintReadOnly": "Agent はツール呼び出しの承認を待っています。プロバイダーのコンソールで承認してください。Orca ではこのセッションは読み取り専用です。",
+            "unsupported": "このホストはまだクラウドセッションの記録を読み取れません。ペアリング先のホストで Orca を更新するか、プロバイダーのコンソールでセッションを開いてください。",
+            "archive": "セッションをアーカイブ",
+            "archiveConfirm": "アーカイブ",
+            "archiveConfirmShort": "確定",
+            "actions": "セッション操作",
+            "archiveTitle": "このセッションをアーカイブしますか？",
+            "archiveBody": "プロバイダーはこのセッションで新しい作業を受け付けなくなります。履歴は Qoder コンソールで引き続き閲覧できます。",
+            "archiveCancel": "キャンセル",
+            "ended": "終了",
+            "retry": "再試行"
+          },
+          "outcome": {
+            "pending": "未開始",
+            "running": "受け入れ基準に向けて作業中",
+            "evaluating": "採点中",
+            "needsRevision": "修正が必要",
+            "satisfied": "基準を満たしました",
+            "maxIterations": "未達成：反復回数の上限に到達",
+            "failed": "満たすことができません",
+            "interrupted": "中断されました",
+            "progress": "{{value0}} / {{value1}} 回目",
+            "label": "受け入れ基準"
+          },
+          "artifact": {
+            "open": "{{value0}} を開く"
+          },
+          "artifacts": {
+            "label": "納品ファイル",
+            "count": "{{value0}} 件のファイルを納品"
+          },
+          "controls": {
+            "busy": "セッションはターンを処理中です。完了を待つかキャンセルしてください。",
+            "dismiss": "閉じる",
+            "approvePrompt": "保留中のツール呼び出しを承認すると Agent が続行します。",
+            "deny": "拒否",
+            "approve": "承認",
+            "placeholder": "このクラウドセッションに追加のメッセージを送信",
+            "busyPlaceholder": "Agent が作業中です。待つかターンをキャンセルしてください",
+            "messageLabel": "クラウドセッションへのメッセージ",
+            "cancel": "ターンをキャンセル",
+            "send": "メッセージを送信",
+            "closed": "このセッションはこれ以上メッセージを受け付けません。",
+            "blockedPlaceholder": "上のツール呼び出しを承認すると続行できます",
+            "unverifiedPlaceholder": "セッション状態を確認できていないため、まだ送信できません",
+            "endedPlaceholder": "このセッションは終了しているため、メッセージを送信できません"
+          },
+          "new": {
+            "title": "新しいクラウドセッション",
+            "description": "Agent はプロバイダーが管理するサンドボックスで実行されます。Orca は監視のみで、このコンピューターでは何も実行しません。",
+            "agent": "Agent",
+            "environment": "環境",
+            "name": "名前（任意）",
+            "prompt": "プロンプト",
+            "promptPlaceholder": "Agent に何をさせますか？",
+            "advanced": "リポジトリ、メモリ、基準",
+            "cancel": "キャンセル",
+            "create": "セッションを開始",
+            "loading": "カタログを読み込み中…",
+            "notConfigured": "先に「設定 → 連携」で Qoder Cloud Agents を接続してください。",
+            "promptFailed": "セッションは作成されましたが、最初のターンが開始されませんでした: {{value0}}",
+            "mountRepo": "GitHub リポジトリをマウント",
+            "repoUrl": "リポジトリ URL",
+            "mountPath": "マウントパス",
+            "repoToken": "GitHub トークン",
+            "repoTokenNote": "細かい権限のトークンを推奨します。Contents は読み取り、プッシュが必要な場合のみ Pull requests の書き込みを付与してください。Orca はこのセッションのリクエストにのみ使用します。",
+            "memory": "メモリストア",
+            "readWrite": "読み書き",
+            "readOnly": "読み取りのみ",
+            "vaults": "Vault",
+            "grade": "受け入れ基準で結果を採点する",
+            "rubric": "受け入れ基準",
+            "rubricPlaceholder": "- /data/report.md が存在する\n- すべての主張に出典がある",
+            "iterations": "最大反復回数",
+            "promptNote": "下でリポジトリをマウントした場合、Agent はそこで作業します。",
+            "repoTokenLink": "トークンを作成",
+            "searchMemory": "メモリストアを検索",
+            "memoryAccessLabel": "{{value0}} のアクセス権",
+            "version": "v{{value0}}",
+            "repoTokenPlaceholder": "ghp_…",
+            "repoUrlPlaceholder": "https://github.com/your-org/your-repo",
+            "mountPathPlaceholder": "/data/workspace/your-repo",
+            "network": "ネットワーク {{value0}}",
+            "packageManagersAllowed": "パッケージマネージャー許可",
+            "packageManagersBlocked": "パッケージマネージャー不可",
+            "allowedHosts": "許可ホスト {{value0}} 件"
+          },
+          "unsupportedHost": "このホストはまだクラウド Agent セッションに対応していません。",
+          "model": {
+            "title": "このセッションのモデル",
+            "auto": "自動",
+            "switch": "モデルを切り替える（現在: {{model}}）",
+            "loading": "モデルを読み込み中…",
+            "empty": "このアカウントには利用できるモデルがありません。",
+            "vision": "画像対応",
+            "effort": "推論の強度",
+            "useDefault": "モデルの既定値を使う"
+          },
+          "failure": {
+            "generic": "{{provider}} に接続できません。ネットワークを確認して再試行してください。"
+          }
+        }
       }
     },
     "i18n": {
@@ -14769,7 +15042,16 @@
         "allow": "許可する",
         "deny": "拒否"
       },
-      "launchPromptNotDelivered": "配信されませんでした — ターミナルを確認してください"
+      "launchPromptNotDelivered": "配信されませんでした — ターミナルを確認してください",
+      "notices": {
+        "acceptanceCriteria": "受け入れ基準",
+        "acceptanceCriteriaLimit": "最大 {{value0}} 回",
+        "outcomeIteration": "{{value0}} 回目",
+        "cloudSessionError": "セッションエラー",
+        "cloudSessionErrorExhausted": "自動では再試行されません",
+        "cloudSessionUpdated": "Agent の設定が更新されました",
+        "cloudSessionUpdatedTools": "{{value0}} 個のツール"
+      }
     },
     "tab": {
       "bar": {

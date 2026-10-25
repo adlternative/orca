@@ -59,10 +59,17 @@ const sheetContentVariants = cva(
         top: 'inset-x-0 top-0 h-auto border-b border-black/14 dark:border-white/14 data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top',
         bottom:
           'inset-x-0 bottom-0 h-auto border-t border-black/14 dark:border-white/14 data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom'
+      },
+      /** `companion`: a non-modal panel that extends the workspace sidebar surface, unpadded,
+       *  with the kanban-sheet slide easing; the caller positions it. */
+      surface: {
+        default: '',
+        companion: 'workspace-kanban-sheet-content bg-worktree-sidebar p-0 sm:max-w-none'
       }
     },
     defaultVariants: {
-      side: 'right'
+      side: 'right',
+      surface: 'default'
     }
   }
 )
@@ -71,6 +78,7 @@ function SheetContent({
   className,
   children,
   side = 'right',
+  surface = 'default',
   showCloseButton = true,
   overlayClassName,
   overlayStyle,
@@ -87,7 +95,7 @@ function SheetContent({
       <SheetOverlay className={overlayClassName} style={overlayStyle} />
       <SheetPrimitive.Content
         data-slot="sheet-content"
-        className={cn(sheetContentVariants({ side }), className)}
+        className={cn(sheetContentVariants({ side, surface }), className)}
         // Why: same as SheetOverlay — the sheet content portals to the
         // document root and its header overlaps the titlebar drag strip.
         style={{ ...style, WebkitAppRegion: 'no-drag' } as React.CSSProperties}

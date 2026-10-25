@@ -1,4 +1,39 @@
 {
+  "cloudTasks": {
+    "newTask": "New cloud task",
+    "launchDescription": "Describe the work. The agent runs in the provider’s cloud, without creating a local workspace.",
+    "task": "What should the agent do?",
+    "promptPlaceholder": "Fix a bug, investigate an issue, or prepare a pull request…",
+    "project": "Project",
+    "unassigned": "Unassigned project",
+    "provider": "Cloud provider",
+    "notConnected": "Not connected",
+    "connectFirst": "Connect this provider in Settings → Integrations to start a task.",
+    "openSettings": "Open settings",
+    "retry": "Retry",
+    "noAgents": "No agents available",
+    "noEnvironments": "No environments available",
+    "repositoryPrefill": "Repository from project: {{url}}",
+    "repositoryAuth": "This provider needs a repository token. Add it under Advanced before starting.",
+    "advanced": "Advanced options",
+    "startTask": "Start cloud task",
+    "catalogFailed": "Could not load launch options. Check the connection and retry.",
+    "uncertain": "The response was lost. A task may already exist. Check the task list before starting another.",
+    "firstTurnFailed": "The task was created, but its first message was not sent. Continue in the composer below; do not create another task.",
+    "cloudRunTarget": "Cloud agent",
+    "cloudRunDetail": "Run without a local workspace",
+    "validation": {
+      "agent": "Choose an agent.",
+      "environment": "Choose an environment.",
+      "prompt": "Describe the task first.",
+      "rubric": "Add acceptance criteria.",
+      "iterations": "Iterations must be between 1 and 20.",
+      "url": "Use an HTTPS repository URL.",
+      "token": "Add a repository token under Advanced, or remove the repository.",
+      "tokenFormat": "Enter a valid GitHub token.",
+      "generic": "Check the launch options."
+    }
+  },
   "sidebar": {
     "revealFiltered": {
       "title": "Reveal hidden workspace?",
@@ -6369,6 +6404,51 @@
           "architectureMismatch": "A Git-related executable could not run because its CPU architecture is incompatible with this execution host. Install Git and related tools for the host architecture.",
           "copyCommand": "Copy command",
           "copyDiagnostics": "Copy diagnostics"
+        },
+        "cloud": {
+          "sessions": {
+            "title": "Cloud sessions",
+            "refresh": "Refresh",
+            "toggle": "Toggle cloud sessions",
+            "empty": "No active cloud sessions.",
+            "stale": "Showing the last known state. {{reason}}",
+            "state": {
+              "unverifiable": "Unverifiable",
+              "working": "Working",
+              "idle": "Idle",
+              "ended": "Ended",
+              "blocked": "Needs approval"
+            },
+            "untitled": "Untitled session",
+            "failure": {
+              "rejected": "{{provider}} rejected the saved credential. Update it in Settings → Integrations.",
+              "unreachable": "{{provider}} is unreachable. Check the network, then try again.",
+              "notConfigured": "Connect {{provider}} in Settings → Integrations.",
+              "malformed": "{{provider}} returned an unexpected response.",
+              "unsupported": "This host does not support cloud agent sessions yet.",
+              "notFound": "This session no longer exists on {{provider}} — it was most likely deleted there."
+            },
+            "openConsole": "Open {{provider}} console",
+            "openSession": "Open {{value0}} in Qoder Cloud ({{value1}})",
+            "outcome": {
+              "met": "Criteria met",
+              "notMet": "Criteria not met"
+            },
+            "newSession": "New cloud session",
+            "needYou": "{{value0}} need you",
+            "moreActions": "More cloud session actions",
+            "showFewer": "Show fewer",
+            "showMore": "Show {{value0}} more idle",
+            "search": "Search cloud sessions",
+            "searchPlaceholder": "Title or session id",
+            "clearSearch": "Clear search",
+            "searching": "Searching…",
+            "noMatch": "No session matches.",
+            "searchTruncated": "Searched the newest sessions only; refine the query to narrow it.",
+            "retry": "Try again",
+            "allProviders": "All",
+            "filterProvider": "Show only {{provider}} sessions"
+          }
         }
       },
       "shared": {
@@ -7480,7 +7560,9 @@
           "3ba07f933b": "Connect issue trackers Orca can use to browse tasks and start workspaces with linked context.",
           "70e885705b": "Task providers",
           "1683acbac4": "Connect the source hosts Orca can use for pull requests, merge requests, checks, and review status.",
-          "298c65ecac": "Review providers"
+          "298c65ecac": "Review providers",
+          "cloudAgents": "Cloud agents",
+          "cloudAgentsDescription": "Connect hosted agent runtimes Orca can watch alongside local agents."
         },
         "KagiSessionLinkForm": {
           "92f0b4e472": "Clear",
@@ -12012,6 +12094,66 @@
         "TerminalRenderingSection": {
           "6d4c55bacc": "Inline Images",
           "fffab5890b": "Display images directly in the terminal using SIXEL, iTerm2 (IIP), and Kitty graphics protocols."
+        },
+        "qoder": {
+          "cloud": {
+            "credentials": {
+              "dialog": {
+                "connectFailed": "Connection failed",
+                "title": "Connect Qoder Cloud Agents",
+                "description": "Use a Qoder personal or service account token to watch cloud agent sessions from Orca. Orca verifies it before saving.",
+                "environmentManaged": "Qoder Cloud is already configured through ORCA_QODER_* environment variables, which take precedence. Unset them to save a credential in Orca.",
+                "accessToken": "Access token (PAT or SAT)",
+                "baseUrl": "API base URL (optional)",
+                "hint": "Qoder CN and Qoder international are separate products with separate tokens; set the base URL to match the console that issued your token.",
+                "docsLink": "Qoder Cloud Agents quickstart",
+                "storageNote": "Stored on this machine with encrypted storage when the OS keychain is available. ORCA_QODER_* environment variables always take precedence over what you save here.",
+                "cancel": "Cancel",
+                "verifying": "Verifying...",
+                "connect": "Connect",
+                "useCn": "Use the Qoder CN endpoint"
+              }
+            },
+            "integration": {
+              "card": {
+                "disconnectFailed": "Could not remove the saved Qoder Cloud credential.",
+                "description": "Watch agent sessions running in Qoder-managed cloud sandboxes.",
+                "connected": "Connected",
+                "notConnected": "Not connected",
+                "edit": "Edit token",
+                "connect": "Connect",
+                "defaultHost": "api.qoder.com",
+                "disconnect": "Disconnect Qoder Cloud",
+                "statusLoadFailed": "Could not check for a saved Qoder Cloud credential.",
+                "envManaged": "Configured via environment variables. Unset ORCA_QODER_* to manage this credential in Orca.",
+                "storedCredential": "Saved in Orca on this machine. Sessions appear in the sidebar under Cloud sessions.",
+                "notConfigured": "Connect with a Qoder personal or service account token. ORCA_QODER_ACCESS_TOKEN works too and takes precedence."
+              }
+            }
+          }
+        },
+        "cloudAgent": {
+          "integration": {
+            "description": "Watch agent sessions running in {{provider}}-managed cloud sandboxes.",
+            "connected": "Connected",
+            "notConnected": "Not connected",
+            "connect": "Connect",
+            "edit": "Edit token",
+            "disconnect": "Disconnect {{provider}}",
+            "disconnectFailed": "Could not remove the saved {{provider}} credential.",
+            "statusLoadFailed": "Could not check for a saved {{provider}} credential.",
+            "envManaged": "Configured via environment variables. Unset {{vars}} to manage this credential in Orca.",
+            "stored": "Saved in Orca on this machine. Its sessions appear alongside the other cloud sessions.",
+            "notConfigured": "Connect with a {{provider}} API key.",
+            "dialogTitle": "Connect {{provider}}",
+            "tokenLabel": "API key",
+            "baseUrlLabel": "API base URL (optional)",
+            "storageNote": "Stored on this machine with encrypted storage when the OS keychain is available.",
+            "connectFailed": "Could not verify that key with {{provider}}.",
+            "cancel": "Cancel",
+            "verifying": "Verifying...",
+            "vendorCli": "Using the {{provider}} CLI login already on this machine."
+          }
         }
       },
       "right": {
@@ -16391,6 +16533,22 @@
         "AutomationsPageBreadcrumb": {
           "ariaLabel": "Automations breadcrumb",
           "runDetails": "Run details"
+        },
+        "cloud": {
+          "schedule": {
+            "host": "Cloud",
+            "openConsole": "Open {{value0}} in the provider console",
+            "noRuns": "No runs yet.",
+            "openSession": "Open session"
+          },
+          "detail": {
+            "schedule": "Schedule",
+            "agent": "Agent",
+            "environment": "Environment",
+            "nextRuns": "Next runs",
+            "prompt": "Prompt",
+            "runs": "Recent runs"
+          }
         }
       },
       "agent": {
@@ -17094,6 +17252,122 @@
         "9a4c6b2d7e": "Skill sharing",
         "3d8e5f1b9c": "Share skills behind an unlisted link and install them on any machine you use.",
         "c5b3e8a17d": "Sign in to Orca"
+      },
+      "cloud": {
+        "sessions": {
+          "drawer": {
+            "title": "Cloud session",
+            "untitled": "Untitled session",
+            "blocked": "Waiting for approval",
+            "working": "Working",
+            "idle": "Idle",
+            "openConsole": "Open in Qoder Cloud",
+            "close": "Close",
+            "live": "● live",
+            "reconnecting": "reconnecting…",
+            "blockedHintReadOnly": "The agent is waiting for a tool call to be approved. Approve it in the provider console; Orca shows this session read-only.",
+            "unsupported": "This host cannot read cloud session transcripts yet. Update Orca on the host it is paired with, or open the session in the provider console.",
+            "archiveConfirm": "Confirm archive",
+            "archive": "Archive session",
+            "archiveConfirmShort": "Confirm",
+            "actions": "Session actions",
+            "archiveTitle": "Archive this session?",
+            "archiveBody": "The provider stops accepting new work on it. Its history stays readable in the Qoder console.",
+            "archiveCancel": "Cancel",
+            "retry": "Try again",
+            "ended": "Ended"
+          },
+          "outcome": {
+            "pending": "Not started",
+            "running": "Working toward criteria",
+            "evaluating": "Grading",
+            "needsRevision": "Needs revision",
+            "satisfied": "Criteria met",
+            "maxIterations": "Not met: iteration limit reached",
+            "failed": "Cannot be satisfied",
+            "interrupted": "Interrupted",
+            "progress": "iteration {{value0}} of {{value1}}",
+            "label": "Acceptance criteria"
+          },
+          "artifact": {
+            "open": "Open {{value0}}"
+          },
+          "artifacts": {
+            "label": "Delivered files",
+            "count": "{{value0}} delivered files"
+          },
+          "controls": {
+            "busy": "The session is processing a turn. Wait for it to finish or cancel it.",
+            "dismiss": "Dismiss",
+            "approvePrompt": "Approve the pending tool call to let the agent continue.",
+            "deny": "Deny",
+            "approve": "Approve",
+            "placeholder": "Send a follow-up to this cloud session",
+            "busyPlaceholder": "The agent is working; wait or cancel the turn",
+            "messageLabel": "Message to the cloud session",
+            "cancel": "Cancel turn",
+            "send": "Send message",
+            "closed": "This session no longer accepts messages.",
+            "blockedPlaceholder": "Approve the tool call above to keep this session going",
+            "endedPlaceholder": "This session has ended and cannot take new messages",
+            "unverifiedPlaceholder": "The session state is unverified; it cannot take a message yet"
+          },
+          "new": {
+            "mountRepo": "Mount a GitHub repository",
+            "repoUrl": "Repository URL",
+            "mountPath": "Mount path",
+            "repoToken": "GitHub token",
+            "repoTokenNote": "A fine-grained token with Contents: read and, only if the agent should push, Pull requests: write. Orca stores it in this session request only.",
+            "memory": "Memory stores",
+            "readWrite": "read & write",
+            "readOnly": "read only",
+            "vaults": "Vaults",
+            "grade": "Grade the result against acceptance criteria",
+            "rubric": "Acceptance criteria",
+            "rubricPlaceholder": "- /data/report.md exists\n- It cites a source for every claim",
+            "iterations": "Max iterations",
+            "environmentNote": "Network {{value0}}{{value1}}",
+            "notConfigured": "Connect Qoder Cloud Agents in Settings → Integrations first.",
+            "promptFailed": "The session was created but its first turn did not start: {{value0}}",
+            "title": "New cloud session",
+            "description": "The agent runs in a sandbox the vendor manages. Orca watches it; nothing runs on this computer.",
+            "loading": "Reading the catalog…",
+            "agent": "Agent",
+            "environment": "Environment",
+            "name": "Name (optional)",
+            "prompt": "Prompt",
+            "promptPlaceholder": "What should the agent do?",
+            "advanced": "Repository, memory, criteria",
+            "cancel": "Cancel",
+            "create": "Start session",
+            "promptNote": "The agent works from the repository you mount below, if any.",
+            "repoTokenLink": "Create a token",
+            "searchMemory": "Search memory stores",
+            "memoryAccessLabel": "{{value0}} access",
+            "version": "v{{value0}}",
+            "repoTokenPlaceholder": "ghp_…",
+            "repoUrlPlaceholder": "https://github.com/your-org/your-repo",
+            "mountPathPlaceholder": "/data/workspace/your-repo",
+            "network": "Network {{value0}}",
+            "packageManagersAllowed": "package managers allowed",
+            "packageManagersBlocked": "no package managers",
+            "allowedHosts": "{{value0}} allowed hosts"
+          },
+          "unsupportedHost": "This host does not support cloud agent sessions yet.",
+          "model": {
+            "title": "Model for this session",
+            "auto": "Auto",
+            "switch": "Switch model, currently {{model}}",
+            "loading": "Loading models…",
+            "empty": "This account lists no models.",
+            "vision": "Vision",
+            "effort": "Reasoning effort",
+            "useDefault": "Use the model default"
+          },
+          "failure": {
+            "generic": "{{provider}} is unreachable. Check the network, then try again."
+          }
+        }
       }
     },
     "i18n": {
@@ -17234,7 +17508,14 @@
       "notices": {
         "compaction": "Context compacted",
         "details": "Details",
-        "plan": "Plan"
+        "plan": "Plan",
+        "acceptanceCriteria": "Acceptance criteria",
+        "acceptanceCriteriaLimit": "up to {{value0}} iterations",
+        "outcomeIteration": "iteration {{value0}}",
+        "cloudSessionError": "Session error",
+        "cloudSessionErrorExhausted": "will not retry on its own",
+        "cloudSessionUpdated": "Agent configuration updated",
+        "cloudSessionUpdatedTools": "{{value0}} tools"
       },
       "composer": {
         "imageUnsupported": "Image paste is not supported for this agent.",

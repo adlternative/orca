@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import type {
   AutomationRun,
@@ -36,6 +36,7 @@ import type { ExternalAutomationListEntry } from './external-automation-list-ent
 import type { ExternalAutomationScope } from './external-automation-scope-client'
 import { AutomationListLocalRow } from './AutomationListLocalRow'
 import { AutomationListExternalRow } from './AutomationListExternalRow'
+import { CloudScheduleRows } from './CloudScheduleRows'
 import { AutomationHostFilterNotice, AutomationHostLoadSummary } from './AutomationHostFilterNotice'
 import { AutomationListEmptyView } from './AutomationListEmptyView'
 import { resolveAutomationListEmptyState } from './automation-list-empty-state'
@@ -286,6 +287,9 @@ export function AutomationsListPanel(props: AutomationsListPanelProps): React.JS
     onDelete: requestDeleteAutomation
   }
 
+  const [cloudRowsPresent, setCloudRowsPresent] = useState(false)
+  const handleCloudPresence = useCallback((present: boolean) => setCloudRowsPresent(present), [])
+
   return (
     <section
       className="flex min-h-0 flex-1 flex-col overflow-hidden px-3 pb-4 md:px-5"
@@ -341,6 +345,7 @@ export function AutomationsListPanel(props: AutomationsListPanelProps): React.JS
           <div className="min-w-full w-fit">
             <AutomationListTableHeader sort={listSort} onSort={onListSortChange} />
             <div className="divide-y divide-border/50">
+              <CloudScheduleRows relativeNow={relativeNow} onPresence={handleCloudPresence} />
               {sortedListItems.map((item) =>
                 item.kind === 'local' ? (
                   <AutomationListLocalRow key={item.id} {...rowProps} row={item.row} />
@@ -366,10 +371,21 @@ export function AutomationsListPanel(props: AutomationsListPanelProps): React.JS
             </div>
           </div>
         ) : (
-          <AutomationListEmptyView
-            {...emptyStateInput}
-            onRecover={(action) => onRecoverHost(action)}
-          />
+          <>
+            {/* Why: vendor schedules are not Orca list items, so they must not vanish behind the empty state. */}
+            <div className="min-w-full w-fit">
+              <div className="divide-y divide-border/50">
+                <CloudScheduleRows relativeNow={relativeNow} onPresence={handleCloudPresence} />
+              </div>
+            </div>
+            {/* Why: "no automations" would contradict the vendor schedules listed right above. */}
+            {cloudRowsPresent ? null : (
+              <AutomationListEmptyView
+                {...emptyStateInput}
+                onRecover={(action) => onRecoverHost(action)}
+              />
+            )}
+          </>
         )}
 
         {!hasListItems && TEMPLATE_EMPTY_STATES.has(emptyState.kind) ? (

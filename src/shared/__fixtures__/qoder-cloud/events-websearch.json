@@ -1,0 +1,53 @@
+{
+  "data": [
+    {
+      "evaluated_permission": "allow",
+      "id": "evt_fixture000087",
+      "input": {
+        "query": "example release notes"
+      },
+      "name": "WebSearch",
+      "processed_at": "2026-10-22T13:25:59.468495Z",
+      "type": "agent.tool_use"
+    },
+    {
+      "content": [
+        {
+          "text": "Web search results for \"example release notes\":\n\n[{\"title\":\"Example release notes\",\"url\":\"https://example.com/releases\",\"snippet\":\"Synthetic search result.\"}]",
+          "type": "text"
+        }
+      ],
+      "id": "evt_fixture000088",
+      "is_error": false,
+      "processed_at": "2026-10-22T13:26:02.142115Z",
+      "tool_use_id": "evt_fixture000087",
+      "type": "agent.tool_result"
+    },
+    {
+      "evaluated_permission": "allow",
+      "id": "evt_fixture000089",
+      "input": {
+        "prompt": "Summarize the example release notes.",
+        "url": "https://example.com/releases"
+      },
+      "name": "WebFetch",
+      "processed_at": "2026-10-22T13:26:07.784127Z",
+      "type": "agent.tool_use"
+    },
+    {
+      "content": [
+        {
+          "text": "# Example news\n\n[Sample release](https://example.com/news/sample-release)\n\nSynthetic web page content for the WebFetch transcript test.",
+          "type": "text"
+        }
+      ],
+      "id": "evt_fixture000090",
+      "is_error": false,
+      "processed_at": "2026-10-22T13:26:14.059132Z",
+      "tool_use_id": "evt_fixture000089",
+      "type": "agent.tool_result"
+    }
+  ],
+  "next_page": null,
+  "has_more": false
+}

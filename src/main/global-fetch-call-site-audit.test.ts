@@ -20,6 +20,10 @@ const AUDITED_GLOBAL_FETCH_LINES = new Map<string, number>([
   ['main/bitbucket/client.ts', 1],
   ['main/bitbucket/user-request.ts', 1],
   ['main/gitea/client.ts', 1],
+  // Why: requestJson consumes JSON on every status and cancels when the body is unreadable; the
+  // SSE stream reads to end-of-stream or aborts, and cancels on a non-2xx handshake.
+  ['main/qoder-cloud/client.ts', 1],
+  ['main/qoder-cloud/stream-manager.ts', 1],
   ['main/orca-profiles/profile-cloud-client.ts', 1],
   ['main/orca-profiles/profile-cloud-org-members-client.ts', 1],
   ['main/rate-limits/codex-fetcher.ts', 3],

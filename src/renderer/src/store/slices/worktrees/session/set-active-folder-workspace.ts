@@ -44,6 +44,8 @@ export function createSetActiveFolderWorkspace(
         activeWorkspaceKey: workspaceKey,
         activeWorkspaceExecutionHostId: executionHostId ?? null,
         activePendingCreationId: null,
+        openCloudSessionId: null,
+        openCloudSessionProvider: null,
         activeFileId,
         activeBrowserTabId,
         activeTabType,

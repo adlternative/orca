@@ -1,0 +1,63 @@
+{
+  "data": [
+    {
+      "id": "evt_fixture000070",
+      "processed_at": "2026-08-10T11:19:30.57339Z",
+      "type": "agent.thinking"
+    },
+    {
+      "content": [
+        {
+          "text": "PR ref 不存在于该远端格式；我改为直接拉取指定 head 分支并对 base 做 diff。",
+          "type": "text"
+        }
+      ],
+      "id": "evt_fixture000071",
+      "processed_at": "2026-08-10T11:19:30.678237Z",
+      "type": "agent.message"
+    },
+    {
+      "evaluated_permission": "allow",
+      "id": "evt_fixture000072",
+      "input": {
+        "command": "echo redacted",
+        "description": "Fetch branch head and list changed files"
+      },
+      "name": "Bash",
+      "processed_at": "2026-08-10T11:19:31.237958Z",
+      "type": "agent.tool_use"
+    },
+    {
+      "id": "evt_fixture000073",
+      "is_error": false,
+      "model_request_start_id": "evt_fixture000074",
+      "model_usage": {
+        "credits": 1.48
+      },
+      "processed_at": "2026-08-10T11:19:31.25815Z",
+      "type": "span.model_request_end"
+    },
+    {
+      "agent_name": "review-agent",
+      "id": "evt_fixture000075",
+      "processed_at": "2026-08-10T11:19:31.25815Z",
+      "session_thread_id": "sthr_fixture000005",
+      "stop_reason": {
+        "event_ids": ["evt_fixture000072"],
+        "type": "requires_action"
+      },
+      "type": "session.thread_status_idle"
+    },
+    {
+      "id": "evt_fixture000076",
+      "processed_at": "2026-08-10T11:19:31.25815Z",
+      "stop_reason": {
+        "event_ids": ["evt_fixture000072"],
+        "type": "requires_action"
+      },
+      "type": "session.status_idle"
+    }
+  ],
+  "next_page": null,
+  "has_more": false
+}

@@ -1,4 +1,39 @@
 {
+  "cloudTasks": {
+    "newTask": "Nouvelle tâche cloud",
+    "launchDescription": "Décrivez le travail. L’agent l’exécute dans le cloud, sans espace de travail local.",
+    "task": "Que doit faire l’agent ?",
+    "promptPlaceholder": "Corriger un bug, analyser un problème ou préparer une pull request…",
+    "project": "Projet",
+    "unassigned": "Sans projet",
+    "provider": "Fournisseur cloud",
+    "notConnected": "Non connecté",
+    "connectFirst": "Connectez ce fournisseur dans Paramètres → Intégrations pour démarrer une tâche.",
+    "openSettings": "Ouvrir les paramètres",
+    "retry": "Réessayer",
+    "noAgents": "Aucun agent disponible",
+    "noEnvironments": "Aucun environnement disponible",
+    "repositoryPrefill": "Dépôt du projet : {{url}}",
+    "repositoryAuth": "Ce fournisseur requiert un jeton de dépôt. Ajoutez-le dans les options avancées.",
+    "advanced": "Options avancées",
+    "startTask": "Démarrer la tâche cloud",
+    "catalogFailed": "Impossible de charger les options. Vérifiez la connexion et réessayez.",
+    "uncertain": "La réponse a été perdue. La tâche existe peut-être déjà. Vérifiez la liste avant de recommencer.",
+    "firstTurnFailed": "La tâche a été créée, mais le premier message n’a pas été envoyé. Continuez ci-dessous sans recréer la tâche.",
+    "cloudRunTarget": "Agent cloud",
+    "cloudRunDetail": "Exécuter sans espace local",
+    "validation": {
+      "agent": "Choisissez un agent.",
+      "environment": "Choisissez un environnement.",
+      "prompt": "Décrivez d’abord la tâche.",
+      "rubric": "Ajoutez des critères d’acceptation.",
+      "iterations": "Le nombre d’itérations doit être entre 1 et 20.",
+      "url": "Utilisez une URL de dépôt HTTPS.",
+      "token": "Ajoutez un jeton dans les options avancées ou retirez le dépôt.",
+      "tokenFormat": "Saisissez un jeton GitHub valide.",
+      "generic": "Vérifiez les options."
+    }
+  },
   "app": {
     "recoverableError": {
       "rootTitle": "Orca a rencontré une erreur de rendu.",
@@ -6011,6 +6046,51 @@
           "projectOnly": "Ajouté dans ce projet uniquement.",
           "useGlobalFor": "Utiliser la valeur globale pour {{value0}}",
           "useGlobal": "Utiliser la valeur globale"
+        },
+        "cloud": {
+          "sessions": {
+            "empty": "Aucune session cloud active.",
+            "refresh": "Actualiser",
+            "stale": "Affichage du dernier état connu. {{reason}}",
+            "state": {
+              "ended": "Terminée",
+              "idle": "Inactive",
+              "unverifiable": "Invérifiable",
+              "working": "En cours",
+              "blocked": "Approbation requise"
+            },
+            "title": "Sessions cloud",
+            "toggle": "Afficher ou masquer les sessions cloud",
+            "untitled": "Session sans titre",
+            "failure": {
+              "rejected": "{{provider}} a refusé les identifiants enregistrés. Mettez-les à jour dans Réglages → Intégrations.",
+              "unreachable": "{{provider}} est injoignable. Vérifiez le réseau puis réessayez.",
+              "notConfigured": "Connectez {{provider}} dans Réglages → Intégrations.",
+              "malformed": "{{provider}} a renvoyé une réponse inattendue.",
+              "unsupported": "Cet hôte ne prend pas encore en charge les sessions d’agents cloud.",
+              "notFound": "Cette session n’existe plus sur {{provider}} — elle y a probablement été supprimée."
+            },
+            "openConsole": "Ouvrir la console {{provider}}",
+            "openSession": "Ouvrir {{value0}} ({{value1}})",
+            "outcome": {
+              "met": "Critères remplis",
+              "notMet": "Critères non remplis"
+            },
+            "newSession": "Nouvelle session cloud",
+            "needYou": "{{value0}} à traiter",
+            "moreActions": "Autres actions de session cloud",
+            "showFewer": "Réduire",
+            "showMore": "Afficher {{value0}} de plus",
+            "search": "Rechercher des sessions cloud",
+            "searchPlaceholder": "Titre ou identifiant de session",
+            "clearSearch": "Effacer la recherche",
+            "searching": "Recherche…",
+            "noMatch": "Aucune session ne correspond.",
+            "searchTruncated": "Seules les sessions récentes ont été parcourues ; affinez la requête.",
+            "retry": "Réessayer",
+            "allProviders": "Tous",
+            "filterProvider": "Afficher uniquement les sessions {{provider}}"
+          }
         }
       },
       "shared": {
@@ -7080,7 +7160,9 @@
           "3ba07f933b": "Connectez les trackers d'issues qu'Orca peut utiliser pour parcourir les tâches et démarrer des espaces de travail avec le contexte associé.",
           "70e885705b": "Fournisseurs de tâches",
           "1683acbac4": "Connectez les hébergeurs de code qu'Orca peut utiliser pour les pull requests, merge requests, checks et statuts de revue.",
-          "298c65ecac": "Fournisseurs de revue"
+          "298c65ecac": "Fournisseurs de revue",
+          "cloudAgents": "Agents cloud",
+          "cloudAgentsDescription": "Connectez des environnements d’agents hébergés qu’Orca peut surveiller aux côtés des agents locaux."
         },
         "KagiSessionLinkForm": {
           "92f0b4e472": "Effacer",
@@ -11337,6 +11419,66 @@
         },
         "shortcutDefinitionCatalog": {
           "missionControlConflict": "Bloqué par Mission Control. Remappez ici ou changez-le dans Réglages Système."
+        },
+        "qoder": {
+          "cloud": {
+            "credentials": {
+              "dialog": {
+                "accessToken": "Jeton d’accès (PAT ou SAT)",
+                "baseUrl": "URL de base de l’API (facultatif)",
+                "cancel": "Annuler",
+                "connect": "Connecter",
+                "connectFailed": "Échec de la connexion",
+                "description": "Utilisez un jeton de compte personnel ou de service Qoder pour suivre les sessions d’agents cloud depuis Orca. Orca le vérifie avant de l’enregistrer.",
+                "docsLink": "Guide de démarrage Qoder Cloud Agents",
+                "environmentManaged": "Qoder Cloud est déjà configuré via les variables d’environnement ORCA_QODER_*, qui ont la priorité. Supprimez-les pour enregistrer un identifiant dans Orca.",
+                "hint": "Qoder CN et Qoder international sont des produits distincts avec des jetons distincts ; faites correspondre l’URL de base à la console qui a émis votre jeton.",
+                "storageNote": "Stocké sur cette machine, chiffré lorsque le trousseau du système est disponible. Les variables d’environnement ORCA_QODER_* ont toujours la priorité sur ce que vous enregistrez ici.",
+                "title": "Connecter Qoder Cloud Agents",
+                "verifying": "Vérification…",
+                "useCn": "Utiliser le point de terminaison Qoder CN"
+              }
+            },
+            "integration": {
+              "card": {
+                "connect": "Connecter",
+                "connected": "Connecté",
+                "defaultHost": "api.qoder.com",
+                "description": "Suivez les sessions d’agents exécutées dans des bacs à sable cloud gérés par Qoder.",
+                "disconnect": "Déconnecter Qoder Cloud",
+                "disconnectFailed": "Impossible de supprimer l’identifiant Qoder Cloud enregistré.",
+                "edit": "Modifier le jeton",
+                "envManaged": "Configuré via des variables d’environnement. Supprimez ORCA_QODER_* pour gérer cet identifiant dans Orca.",
+                "notConfigured": "Connectez-vous avec un jeton de compte personnel ou de service Qoder. ORCA_QODER_ACCESS_TOKEN fonctionne aussi et a la priorité.",
+                "notConnected": "Non connecté",
+                "statusLoadFailed": "Impossible de vérifier la présence d’un identifiant Qoder Cloud enregistré.",
+                "storedCredential": "Enregistré dans Orca sur cette machine. Les sessions apparaissent dans la barre latérale sous « Sessions cloud »."
+              }
+            }
+          }
+        },
+        "cloudAgent": {
+          "integration": {
+            "description": "Suivez les sessions d’agent exécutées dans les bacs à sable cloud gérés par {{provider}}.",
+            "connected": "Connecté",
+            "notConnected": "Non connecté",
+            "connect": "Connecter",
+            "edit": "Modifier le jeton",
+            "disconnect": "Déconnecter {{provider}}",
+            "disconnectFailed": "Impossible de supprimer les identifiants {{provider}} enregistrés.",
+            "statusLoadFailed": "Impossible de vérifier les identifiants {{provider}} enregistrés.",
+            "envManaged": "Configuré via des variables d’environnement. Supprimez {{vars}} pour gérer cet identifiant dans Orca.",
+            "stored": "Enregistré dans Orca sur cette machine. Ses sessions apparaissent avec les autres sessions cloud.",
+            "notConfigured": "Connectez-vous avec une clé API {{provider}}.",
+            "dialogTitle": "Connecter {{provider}}",
+            "tokenLabel": "Clé API",
+            "baseUrlLabel": "URL de base de l’API (facultatif)",
+            "storageNote": "Stocké sur cette machine avec un chiffrement lorsque le trousseau du système est disponible.",
+            "connectFailed": "Impossible de vérifier cette clé auprès de {{provider}}.",
+            "cancel": "Annuler",
+            "verifying": "Vérification...",
+            "vendorCli": "Utilise la connexion {{provider}} CLI déjà présente sur cette machine."
+          }
         }
       },
       "right": {
@@ -15426,6 +15568,22 @@
         "AutomationListSortHeader": {
           "sortedAscending": "{{value0}}, tri croissant",
           "sortedDescending": "{{value0}}, tri décroissant"
+        },
+        "cloud": {
+          "schedule": {
+            "host": "Cloud",
+            "openConsole": "Ouvrir {{value0}} dans la console du fournisseur",
+            "noRuns": "Aucune exécution pour le moment.",
+            "openSession": "Ouvrir la session"
+          },
+          "detail": {
+            "schedule": "Planification",
+            "agent": "Agent",
+            "environment": "Environnement",
+            "nextRuns": "Prochaines",
+            "prompt": "Invite",
+            "runs": "Exécutions récentes"
+          }
         }
       },
       "agent": {
@@ -15926,6 +16084,121 @@
         "expiredCompact": "Expiré",
         "typeMarkdown": "Markdown",
         "typeHtml": "HTML"
+      },
+      "cloud": {
+        "sessions": {
+          "drawer": {
+            "title": "Session cloud",
+            "untitled": "Session sans titre",
+            "blocked": "En attente d’approbation",
+            "working": "En cours",
+            "idle": "Inactive",
+            "openConsole": "Ouvrir dans Qoder Cloud",
+            "close": "Fermer",
+            "live": "● en direct",
+            "reconnecting": "reconnexion…",
+            "blockedHintReadOnly": "L’agent attend l’approbation d’un appel d’outil. Approuvez-le dans la console du fournisseur ; Orca affiche cette session en lecture seule.",
+            "unsupported": "Cet hôte ne peut pas encore lire les transcriptions de sessions cloud. Mettez à jour Orca sur l’hôte appairé, ou ouvrez la session dans la console du fournisseur.",
+            "archive": "Archiver la session",
+            "archiveConfirm": "Archiver",
+            "archiveConfirmShort": "Confirmer",
+            "actions": "Actions de la session",
+            "archiveTitle": "Archiver cette session ?",
+            "archiveBody": "Le fournisseur n’acceptera plus de nouveau travail dessus. L’historique reste consultable dans la console Qoder.",
+            "archiveCancel": "Annuler",
+            "ended": "Terminée",
+            "retry": "Réessayer"
+          },
+          "outcome": {
+            "pending": "Non démarré",
+            "running": "Travail vers les critères",
+            "evaluating": "Évaluation",
+            "needsRevision": "Révision nécessaire",
+            "satisfied": "Critères remplis",
+            "maxIterations": "Non remplis : limite d’itérations atteinte",
+            "failed": "Impossible à satisfaire",
+            "interrupted": "Interrompu",
+            "progress": "itération {{value0}} sur {{value1}}",
+            "label": "Critères d’acceptation"
+          },
+          "artifact": {
+            "open": "Ouvrir {{value0}}"
+          },
+          "artifacts": {
+            "label": "Fichiers livrés",
+            "count": "{{value0}} fichiers livrés"
+          },
+          "controls": {
+            "busy": "La session traite un tour. Attendez la fin ou annulez-le.",
+            "dismiss": "Ignorer",
+            "approvePrompt": "Approuvez l’appel d’outil en attente pour que l’agent continue.",
+            "deny": "Refuser",
+            "approve": "Approuver",
+            "placeholder": "Envoyer un message de suivi à cette session cloud",
+            "busyPlaceholder": "L’agent travaille ; attendez ou annulez le tour",
+            "messageLabel": "Message pour la session cloud",
+            "cancel": "Annuler le tour",
+            "send": "Envoyer le message",
+            "closed": "Cette session n’accepte plus de messages.",
+            "blockedPlaceholder": "Approuvez l'appel d'outil ci-dessus pour continuer",
+            "unverifiedPlaceholder": "L'état de la session n'est pas vérifié ; l'envoi est indisponible",
+            "endedPlaceholder": "Cette session est terminée ; impossible d’envoyer un message"
+          },
+          "new": {
+            "title": "Nouvelle session cloud",
+            "description": "L’agent s’exécute dans un bac à sable géré par le fournisseur. Orca l’observe ; rien ne s’exécute sur cet ordinateur.",
+            "agent": "Agent",
+            "environment": "Environnement",
+            "name": "Nom (facultatif)",
+            "prompt": "Invite",
+            "promptPlaceholder": "Que doit faire l’agent ?",
+            "advanced": "Dépôt, mémoire, critères",
+            "cancel": "Annuler",
+            "create": "Démarrer la session",
+            "loading": "Lecture du catalogue…",
+            "notConfigured": "Connectez d’abord Qoder Cloud Agents dans Paramètres → Intégrations.",
+            "promptFailed": "La session a été créée mais son premier tour n’a pas démarré : {{value0}}",
+            "mountRepo": "Monter un dépôt GitHub",
+            "repoUrl": "URL du dépôt",
+            "mountPath": "Chemin de montage",
+            "repoToken": "Jeton GitHub",
+            "repoTokenNote": "Préférez un jeton à portée limitée : Contents en lecture, et Pull requests en écriture seulement si l’agent doit pousser. Orca ne l’utilise que pour cette requête de session.",
+            "memory": "Stores de mémoire",
+            "readWrite": "lecture et écriture",
+            "readOnly": "lecture seule",
+            "vaults": "Coffres",
+            "grade": "Évaluer le résultat selon les critères",
+            "rubric": "Critères d’acceptation",
+            "rubricPlaceholder": "- /data/report.md existe\n- Chaque affirmation cite une source",
+            "iterations": "Itérations max",
+            "promptNote": "Si vous montez un dépôt ci-dessous, l’agent y travaille.",
+            "repoTokenLink": "Créer un jeton",
+            "searchMemory": "Rechercher des stores de mémoire",
+            "memoryAccessLabel": "accès à {{value0}}",
+            "version": "v{{value0}}",
+            "repoTokenPlaceholder": "ghp_…",
+            "repoUrlPlaceholder": "https://github.com/your-org/your-repo",
+            "mountPathPlaceholder": "/data/workspace/your-repo",
+            "network": "Réseau {{value0}}",
+            "packageManagersAllowed": "gestionnaires de paquets autorisés",
+            "packageManagersBlocked": "gestionnaires de paquets bloqués",
+            "allowedHosts": "{{value0}} hôtes autorisés"
+          },
+          "unsupportedHost": "Cet hôte ne prend pas encore en charge les sessions d’agents cloud.",
+          "model": {
+            "title": "Modèle de cette session",
+            "auto": "Auto",
+            "switch": "Changer de modèle, actuellement {{model}}",
+            "loading": "Chargement des modèles…",
+            "empty": "Ce compte ne propose aucun modèle.",
+            "vision": "Vision",
+            "effort": "Effort de raisonnement",
+            "useDefault": "Utiliser la valeur par défaut du modèle"
+          },
+          "failure": {
+            "generic": "{{provider}} est injoignable. Vérifiez le réseau puis réessayez."
+          }
+        }
       }
     },
     "i18n": {
@@ -16105,7 +16378,16 @@
         "allow": "Autoriser",
         "deny": "Refuser"
       },
-      "launchPromptNotDelivered": "Non livré — vérifiez le terminal"
+      "launchPromptNotDelivered": "Non livré — vérifiez le terminal",
+      "notices": {
+        "acceptanceCriteria": "Critères d’acceptation",
+        "acceptanceCriteriaLimit": "jusqu’à {{value0}} itérations",
+        "outcomeIteration": "itération {{value0}}",
+        "cloudSessionError": "Erreur de session",
+        "cloudSessionErrorExhausted": "ne réessaiera pas automatiquement",
+        "cloudSessionUpdated": "Configuration de l’agent mise à jour",
+        "cloudSessionUpdatedTools": "{{value0}} outils"
+      }
     },
     "tab": {
       "bar": {

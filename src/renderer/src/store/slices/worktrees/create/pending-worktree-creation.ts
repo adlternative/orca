@@ -10,7 +10,9 @@ export function createBeginPendingWorktreeCreation(
   return (entry) => {
     set((s) => ({
       pendingWorktreeCreations: { ...s.pendingWorktreeCreations, [entry.creationId]: entry },
-      activePendingCreationId: entry.creationId
+      activePendingCreationId: entry.creationId,
+      openCloudSessionId: null,
+      openCloudSessionProvider: null
     }))
   }
 }

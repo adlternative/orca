@@ -13,6 +13,7 @@ import type { AppChromeLayout } from './use-app-chrome-layout'
 import type { FloatingWorkspacePanelState } from './use-floating-workspace-panel'
 
 const Landing = lazy(() => import('../components/Landing'))
+const CloudSessionPanel = lazy(() => import('../components/cloud-sessions/CloudSessionPanel'))
 const WorktreeCreationPanel = lazy(
   () => import('../components/worktree-creation/WorktreeCreationPanel')
 )
@@ -66,6 +67,9 @@ function WorktreeSidebar({
 
 function ActivePage({ layout }: { layout: AppChromeLayout }): React.JSX.Element {
   const { activeView, activeWorktreeId, activePendingCreationId, creationLayoutActive } = layout
+  if (layout.cloudSessionActive) {
+    return <CloudSessionPanel />
+  }
   return (
     <>
       {activeView === 'settings' ? <Settings /> : null}

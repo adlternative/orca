@@ -44,6 +44,12 @@ import { useComposerFileDragOver } from './new-workspace/use-composer-file-drag-
 const loadSetProjectLocationDialog = (): Promise<typeof SetProjectLocationDialogModule> =>
   import('@/components/new-workspace/SetProjectLocationDialog')
 
+const NewCloudSessionDialog = lazyWithRetry(() =>
+  import('./cloud-sessions/NewCloudSessionDialog').then((module) => ({
+    default: module.NewCloudSessionDialog
+  }))
+)
+
 const SetProjectLocationDialog = lazyWithRetry(
   () =>
     loadSetProjectLocationDialog().then((module) => ({
@@ -92,6 +98,7 @@ export default function NewWorkspaceComposerCard(
   const projects = useAppStore((state) => state.projects)
   const repos = useAppStore((state) => state.repos)
   const nameInputFocusFrameRef = React.useRef<number | null>(null)
+  const [cloudTaskOpen, setCloudTaskOpen] = React.useState(false)
   const branchNameInputId = React.useId()
   const projectDescriptionId = React.useId()
   const [addRemoteHostMode, setAddRemoteHostMode] = React.useState<AddRemoteHostMode | null>(null)
@@ -313,6 +320,7 @@ export default function NewWorkspaceComposerCard(
           sshStatusLabel={sshStatusLabel}
           connectButtonLabel={connectButtonLabel}
           selectedProjectName={selectedProjectName}
+          onCloudTask={() => setCloudTaskOpen(true)}
         />
         <NewWorkspaceComposerNameSection {...props} onNamePlainEnter={handleNamePlainEnter} />
         <NewWorkspaceComposerAgentSection
@@ -341,6 +349,20 @@ export default function NewWorkspaceComposerCard(
         {...props}
         submitShortcutModifierLabel={getScreenSubmitModifierLabel()}
       />
+      {cloudTaskOpen ? (
+        <React.Suspense fallback={null}>
+          <NewCloudSessionDialog
+            open
+            initialProjectId={selectedProjectId}
+            onOpenChange={(next) => {
+              setCloudTaskOpen(next)
+              if (!next && useAppStore.getState().openCloudSessionId) {
+                useAppStore.getState().closeModal()
+              }
+            }}
+          />
+        </React.Suspense>
+      ) : null}
       <AddRemoteHostDialog mode={addRemoteHostMode} onOpenChange={setAddRemoteHostMode} />
       {setLocationDialogMounted ? (
         <React.Suspense fallback={null}>

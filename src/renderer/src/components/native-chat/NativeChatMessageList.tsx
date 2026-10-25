@@ -34,6 +34,7 @@ import type { NativeChatRailItem } from './native-chat-message-rail-items'
 import type { AgentJournalRenderItem } from '../../../../shared/agent-session-journal-types'
 import { isStructuredAgentSessionThinking } from '../../../../shared/structured-agent-session-live-turn'
 import type { NativeChatSettledTurns } from '../../../../shared/native-chat-turn-status'
+import { cn } from '@/lib/utils'
 import {
   nativeChatTurnDiffs,
   type NativeChatDiffReveal,
@@ -64,7 +65,8 @@ export function NativeChatMessageList({
   showTurnStatus = true,
   showLiveTurnActivity = true,
   turnActivity,
-  runtimeContext
+  runtimeContext,
+  contentInset = 'default'
 }: {
   session: NativeChatLiveSession
   journalItems?: readonly AgentJournalRenderItem[]
@@ -86,6 +88,8 @@ export function NativeChatMessageList({
   showLiveTurnActivity?: boolean
   turnActivity?: NativeChatTurnActivity | null
   runtimeContext?: RuntimeFileOperationArgs | null
+  /** `compact` trims the top gutter a full-height chat uses for its scroll affordance. */
+  contentInset?: 'default' | 'compact'
 }): React.JSX.Element {
   const [navigationRequest, setNavigationRequest] = useState<NativeChatNavigationRequest | null>(
     null
@@ -317,7 +321,7 @@ export function NativeChatMessageList({
             // window by exactly `fontScale`. (Chromium/Electron only.)
             style={{ zoom: fontScale }}
           >
-            <div className="px-3 pt-10 pb-4 sm:px-4">
+            <div className={cn('px-3 pb-4 sm:px-4', contentInset === 'compact' ? 'pt-4' : 'pt-10')}>
               <div
                 ref={contentRef}
                 // Why: matches composer column (max-w-4xl) with 5px horizontal inset

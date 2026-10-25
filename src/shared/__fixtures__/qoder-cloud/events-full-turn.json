@@ -1,0 +1,92 @@
+{
+  "data": [
+    {
+      "id": "evt_fixture000001",
+      "processed_at": "2026-09-15T12:58:48.354143998Z",
+      "type": "session.status_running"
+    },
+    {
+      "agent_name": "report-agent",
+      "id": "evt_fixture000002",
+      "processed_at": "2026-09-15T12:58:48.354143998Z",
+      "session_thread_id": "sthr_fixture000001",
+      "type": "session.thread_status_running"
+    },
+    {
+      "content": [
+        {
+          "text": "早上好，今天要处理什么",
+          "type": "text"
+        }
+      ],
+      "id": "evt_fixture000003",
+      "processed_at": "2026-09-15T12:58:48.354143998Z",
+      "type": "user.message"
+    },
+    {
+      "id": "evt_fixture000004",
+      "processed_at": "2026-09-15T12:58:48.383756411Z",
+      "type": "span.model_request_start"
+    },
+    {
+      "id": "evt_fixture000005",
+      "processed_at": "2026-09-15T12:58:50.158641Z",
+      "type": "agent.thinking"
+    },
+    {
+      "content": [
+        {
+          "text": "早上好，我来拉一下今天的待办总览。\n\n",
+          "type": "text"
+        }
+      ],
+      "id": "evt_fixture000006",
+      "processed_at": "2026-09-15T12:58:50.377514Z",
+      "type": "agent.message"
+    },
+    {
+      "evaluated_permission": "ask",
+      "id": "evt_fixture000007",
+      "input": {
+        "command": "echo \"placeholder\""
+      },
+      "name": "Bash",
+      "processed_at": "2026-09-15T12:58:50.579402Z",
+      "type": "agent.tool_use"
+    },
+    {
+      "id": "evt_fixture000008",
+      "is_error": false,
+      "model_request_start_id": "evt_fixture000004",
+      "model_usage": {
+        "credits": 1.95
+      },
+      "processed_at": "2026-09-15T12:58:50.579402Z",
+      "type": "span.model_request_end"
+    },
+    {
+      "agent_name": "report-agent",
+      "id": "evt_fixture000009",
+      "processed_at": "2026-09-15T12:58:50.579402Z",
+      "session_thread_id": "sthr_fixture000001",
+      "stop_reason": {
+        "event_ids": ["evt_fixture000007"],
+        "type": "requires_action"
+      },
+      "type": "session.thread_status_idle"
+    },
+    {
+      "id": "evt_fixture000010",
+      "processed_at": "2026-09-15T12:58:50.579402Z",
+      "stop_reason": {
+        "event_ids": ["evt_fixture000007"],
+        "type": "requires_action"
+      },
+      "type": "session.status_idle"
+    }
+  ],
+  "first_id": "evt_fixture000001",
+  "has_more": false,
+  "last_id": "evt_fixture000010",
+  "next_page": null
+}

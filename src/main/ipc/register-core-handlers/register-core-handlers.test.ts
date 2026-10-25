@@ -381,6 +381,9 @@ vi.mock('../jira', () => ({
 vi.mock('../bitbucket', () => ({
   registerBitbucketHandlers: registerBitbucketHandlersMock
 }))
+vi.mock('../cloud-agents', () => ({
+  registerCloudAgentHandlers: vi.fn()
+}))
 
 vi.mock('../gitlab', () => ({
   registerGitLabHandlers: registerGitLabHandlersMock

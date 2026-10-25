@@ -1,0 +1,74 @@
+{
+  "data": [
+    {
+      "agent_name": "review-agent",
+      "id": "evt_fixture000077",
+      "processed_at": "2026-08-10T14:54:26.52091Z",
+      "session_thread_id": "sthr_fixture000006",
+      "stop_reason": {
+        "event_ids": [
+          "evt_fixture000078",
+          "evt_fixture000079",
+          "evt_fixture000080",
+          "evt_fixture000081"
+        ],
+        "type": "requires_action"
+      },
+      "type": "session.thread_status_idle"
+    },
+    {
+      "id": "evt_fixture000082",
+      "processed_at": "2026-08-10T14:54:26.52091Z",
+      "stop_reason": {
+        "event_ids": [
+          "evt_fixture000078",
+          "evt_fixture000079",
+          "evt_fixture000080",
+          "evt_fixture000081"
+        ],
+        "type": "requires_action"
+      },
+      "type": "session.status_idle"
+    },
+    {
+      "content": [
+        {
+          "text": "package example\n\nfunc Healthy() bool { return true }\n",
+          "type": "text"
+        }
+      ],
+      "id": "evt_fixture000083",
+      "is_error": false,
+      "processed_at": "2026-08-10T14:54:28.757556Z",
+      "tool_use_id": "evt_fixture000078",
+      "type": "agent.tool_result"
+    },
+    {
+      "id": "evt_fixture000084",
+      "processed_at": "2026-08-10T14:54:28.757556Z",
+      "type": "session.status_running"
+    },
+    {
+      "agent_name": "review-agent",
+      "id": "evt_fixture000085",
+      "processed_at": "2026-08-10T14:54:28.757556Z",
+      "session_thread_id": "sthr_fixture000006",
+      "type": "session.thread_status_running"
+    },
+    {
+      "content": [
+        {
+          "text": "package example\n\nfunc Version() string { return \"test\" }\n",
+          "type": "text"
+        }
+      ],
+      "id": "evt_fixture000086",
+      "is_error": false,
+      "processed_at": "2026-08-10T14:54:28.889936Z",
+      "tool_use_id": "evt_fixture000079",
+      "type": "agent.tool_result"
+    }
+  ],
+  "next_page": null,
+  "has_more": false
+}

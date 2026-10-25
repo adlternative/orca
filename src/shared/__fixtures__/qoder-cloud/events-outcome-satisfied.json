@@ -1,0 +1,250 @@
+{
+  "data": [
+    {
+      "id": "evt_fixture000042",
+      "processed_at": "2026-10-20T13:55:17.351362456Z",
+      "type": "session.status_running"
+    },
+    {
+      "agent_name": "e2e-outcome-1792504514",
+      "id": "evt_fixture000043",
+      "processed_at": "2026-10-20T13:55:17.351362456Z",
+      "session_thread_id": "sthr_fixture000004",
+      "type": "session.thread_status_running"
+    },
+    {
+      "description": "写一个文件并在最后回复 DONE",
+      "id": "evt_fixture000044",
+      "max_iterations": 1,
+      "outcome_id": "outc_00szzlkjwaakhlhd0fu4",
+      "processed_at": "2026-10-20T13:55:17.351362456Z",
+      "rubric": {
+        "content": "- /data/ok.txt 存在且非空\n- 文件内容包含 OK\n- 最终回复里出现 DONE",
+        "type": "text"
+      },
+      "type": "user.define_outcome"
+    },
+    {
+      "id": "evt_fixture000045",
+      "processed_at": "2026-10-20T13:55:17.360994907Z",
+      "type": "span.model_request_start"
+    },
+    {
+      "id": "evt_fixture000046",
+      "processed_at": "2026-10-20T13:55:18.8154Z",
+      "type": "agent.thinking"
+    },
+    {
+      "evaluated_permission": "allow",
+      "id": "evt_fixture000047",
+      "input": {
+        "content": "ok\n",
+        "file_path": "/data/ok.txt"
+      },
+      "name": "Write",
+      "processed_at": "2026-10-20T13:55:18.896114Z",
+      "type": "agent.tool_use"
+    },
+    {
+      "id": "evt_fixture000048",
+      "is_error": false,
+      "model_request_start_id": "evt_fixture000045",
+      "model_usage": {
+        "credits": 0.65
+      },
+      "processed_at": "2026-10-20T13:55:18.896114Z",
+      "type": "span.model_request_end"
+    },
+    {
+      "content": [
+        {
+          "text": "Write file /data/ok.txt successfully\n\n--- /data/ok.txt\n+++ /data/ok.txt\n@@ -0,0 +1,2 @@\n+ok\n+",
+          "type": "text"
+        }
+      ],
+      "id": "evt_fixture000049",
+      "is_error": false,
+      "processed_at": "2026-10-20T13:55:21.459027Z",
+      "tool_use_id": "evt_fixture000047",
+      "type": "agent.tool_result"
+    },
+    {
+      "id": "evt_fixture000050",
+      "processed_at": "2026-10-20T13:55:21.472244102Z",
+      "type": "span.model_request_start"
+    },
+    {
+      "id": "evt_fixture000051",
+      "processed_at": "2026-10-20T13:55:22.328447Z",
+      "type": "agent.thinking"
+    },
+    {
+      "evaluated_permission": "allow",
+      "id": "evt_fixture000052",
+      "input": {
+        "files": [
+          {
+            "description": "ok file",
+            "path": "/data/ok.txt"
+          }
+        ]
+      },
+      "name": "DeliverArtifacts",
+      "processed_at": "2026-10-20T13:55:22.428826Z",
+      "type": "agent.tool_use"
+    },
+    {
+      "id": "evt_fixture000053",
+      "is_error": false,
+      "model_request_start_id": "evt_fixture000050",
+      "model_usage": {
+        "credits": 0.2
+      },
+      "processed_at": "2026-10-20T13:55:22.428826Z",
+      "type": "span.model_request_end"
+    },
+    {
+      "content_type": "text/plain",
+      "file_id": "file_fixture000013",
+      "id": "evt_fixture000054",
+      "original_filename": "ok.txt",
+      "processed_at": "2026-10-20T13:55:23.006485Z",
+      "size": 3,
+      "type": "agent.artifact_delivered"
+    },
+    {
+      "content": [
+        {
+          "text": "Delivered 1/1 artifact(s):\n- delivered ok.txt (file_id=file_fixture000013, 3 bytes)",
+          "type": "text"
+        }
+      ],
+      "id": "evt_fixture000055",
+      "is_error": false,
+      "processed_at": "2026-10-20T13:55:23.021057Z",
+      "tool_use_id": "evt_fixture000052",
+      "type": "agent.tool_result"
+    },
+    {
+      "id": "evt_fixture000056",
+      "processed_at": "2026-10-20T13:55:23.036932631Z",
+      "type": "span.model_request_start"
+    },
+    {
+      "id": "evt_fixture000057",
+      "processed_at": "2026-10-20T13:55:23.735932Z",
+      "type": "agent.thinking"
+    },
+    {
+      "content": [
+        {
+          "text": "DONE",
+          "type": "text"
+        }
+      ],
+      "id": "evt_fixture000058",
+      "processed_at": "2026-10-20T13:55:23.773102Z",
+      "type": "agent.message"
+    },
+    {
+      "id": "evt_fixture000059",
+      "is_error": false,
+      "model_request_start_id": "evt_fixture000056",
+      "model_usage": {
+        "credits": 0.19
+      },
+      "processed_at": "2026-10-20T13:55:23.773102Z",
+      "type": "span.model_request_end"
+    },
+    {
+      "id": "evt_fixture000060",
+      "iteration": 0,
+      "outcome_id": "outc_00szzlkjwaakhlhd0fu4",
+      "processed_at": "2026-10-20T13:55:23.857797341Z",
+      "type": "span.outcome_evaluation_start"
+    },
+    {
+      "id": "evt_fixture000061",
+      "iteration": 0,
+      "outcome_id": "outc_00szzlkjwaakhlhd0fu4",
+      "processed_at": "2026-10-20T13:55:23.857797341Z",
+      "type": "span.outcome_evaluation_ongoing"
+    },
+    {
+      "id": "evt_fixture000062",
+      "iteration": 0,
+      "outcome_id": "outc_00szzlkjwaakhlhd0fu4",
+      "processed_at": "2026-10-20T13:55:25.078Z",
+      "type": "span.outcome_evaluation_ongoing"
+    },
+    {
+      "explanation": "All rubric criteria verified: /data/ok.txt exists and is non-empty, its content contains \"OK\" (line 1 reads \"ok\"), and the agent's final reply contains \"DONE\".",
+      "id": "evt_fixture000063",
+      "iteration": 0,
+      "outcome_evaluation_start_id": "evt_fixture000060",
+      "outcome_id": "outc_00szzlkjwaakhlhd0fu4",
+      "processed_at": "2026-10-20T13:55:26.537439136Z",
+      "result": "satisfied",
+      "type": "span.outcome_evaluation_end",
+      "usage": {
+        "credits": 1.09
+      }
+    },
+    {
+      "id": "evt_fixture000064",
+      "processed_at": "2026-10-20T13:55:26.553373522Z",
+      "type": "span.model_request_start"
+    },
+    {
+      "content": [
+        {
+          "text": "Delivered `/data/ok.txt` (3 bytes, content `ok`) and confirmed final reply. Done.",
+          "type": "text"
+        }
+      ],
+      "id": "evt_fixture000065",
+      "processed_at": "2026-10-20T13:55:27.265087Z",
+      "type": "agent.message"
+    },
+    {
+      "id": "evt_fixture000066",
+      "is_error": false,
+      "model_request_start_id": "evt_fixture000064",
+      "model_usage": {
+        "credits": 0.2
+      },
+      "processed_at": "2026-10-20T13:55:27.265087Z",
+      "type": "span.model_request_end"
+    },
+    {
+      "agent_name": "e2e-outcome-1792504514",
+      "id": "evt_fixture000067",
+      "processed_at": "2026-10-20T13:55:27.265087Z",
+      "session_thread_id": "sthr_fixture000004",
+      "stop_reason": {
+        "type": "end_turn"
+      },
+      "type": "session.thread_status_idle"
+    },
+    {
+      "id": "evt_fixture000068",
+      "model_credits": 2.34,
+      "processed_at": "2026-10-20T13:55:27.265087Z",
+      "sandbox_runtime_credits": 0,
+      "total_credits": 2.34,
+      "type": "session.usage"
+    },
+    {
+      "id": "evt_fixture000069",
+      "processed_at": "2026-10-20T13:55:27.265087Z",
+      "stop_reason": {
+        "type": "end_turn"
+      },
+      "type": "session.status_idle"
+    }
+  ],
+  "first_id": "evt_fixture000042",
+  "has_more": false,
+  "last_id": "evt_fixture000069",
+  "next_page": null
+}

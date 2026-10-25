@@ -28,6 +28,7 @@ import { ghApi } from './api/gh-bridge'
 import { hostedReviewApi } from './api/hosted-review-bridge'
 import { glApiBridge } from './api/gl-bridge'
 import { bitbucketApi } from './api/bitbucket-bridge'
+import { makeCloudAgentApi } from './api/cloud-agents-bridge'
 import { linearApi } from './api/linear-bridge'
 import { jiraApi } from './api/jira-bridge'
 import { starNagApi } from './api/star-nag-bridge'
@@ -122,6 +123,8 @@ const api = {
   hostedReview: hostedReviewApi,
   gl: glApiBridge,
   bitbucket: bitbucketApi,
+  qoderCloud: makeCloudAgentApi('qoder-cloud'),
+  cloudAgents: makeCloudAgentApi,
   linear: linearApi,
   jira: jiraApi,
   starNag: starNagApi,

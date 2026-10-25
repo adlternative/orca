@@ -39,6 +39,8 @@ export type NativeChatTextBlock = {
   /** Optional journal display hints; readers narrow only the values they know. */
   presentation?: string
   tone?: string
+  /** Optional caption a presentation may render above the text (e.g. an iteration limit). */
+  caption?: string
   /** Optional structured detail for an otherwise ordinary fallback line. */
   providerFrame?: {
     provider: string

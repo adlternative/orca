@@ -5,6 +5,7 @@ import { useSidebarResize } from '@/hooks/useSidebarResize'
 import SidebarHeader from './SidebarHeader'
 import SidebarNav from './SidebarNav'
 import SetupScriptPromptCard from './SetupScriptPromptCard'
+import { CloudSessionsSection } from './CloudSessionsSection'
 import WorktreeList from './WorktreeList'
 import SidebarToolbar from './SidebarToolbar'
 import WorkspaceKanbanDrawer from './WorkspaceKanbanDrawer'
@@ -192,6 +193,7 @@ function Sidebar({
               />
             )}
 
+            <CloudSessionsSection />
             <div className="relative shrink-0">
               <SetupScriptPromptCard />
 

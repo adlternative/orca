@@ -1,4 +1,39 @@
 {
+  "cloudTasks": {
+    "newTask": "新建云端任务",
+    "launchDescription": "描述任务，由云端 Agent 执行，无需创建本地工作区。",
+    "task": "希望 Agent 完成什么？",
+    "promptPlaceholder": "修复问题、调查原因，或准备一个合并请求…",
+    "project": "项目",
+    "unassigned": "未归属项目",
+    "provider": "云端平台",
+    "notConnected": "未连接",
+    "connectFirst": "请先在「设置 → 集成」中连接此平台，再启动任务。",
+    "openSettings": "打开设置",
+    "retry": "重试",
+    "noAgents": "暂无可用 Agent",
+    "noEnvironments": "暂无可用环境",
+    "repositoryPrefill": "使用项目仓库：{{url}}",
+    "repositoryAuth": "此平台需要仓库令牌，请在「高级选项」中填写后启动。",
+    "advanced": "高级选项",
+    "startTask": "启动云端任务",
+    "catalogFailed": "无法加载启动选项，请检查连接后重试。",
+    "uncertain": "未收到启动结果，任务可能已创建。请先检查任务列表，避免重复启动。",
+    "firstTurnFailed": "任务已创建，但首条消息未发送。请在下方继续发送，不要重复创建。",
+    "cloudRunTarget": "云端 Agent",
+    "cloudRunDetail": "无需本地工作区",
+    "validation": {
+      "agent": "请选择 Agent。",
+      "environment": "请选择运行环境。",
+      "prompt": "请先描述任务。",
+      "rubric": "请填写验收标准。",
+      "iterations": "迭代次数必须为 1 至 20 的整数。",
+      "url": "请使用 HTTPS 仓库地址。",
+      "token": "请在高级选项中填写仓库令牌，或取消挂载仓库。",
+      "tokenFormat": "请输入有效的 GitHub 令牌。",
+      "generic": "请检查启动选项。"
+    }
+  },
   "app": {
     "recoverableError": {
       "rootTitle": "Orca 遇到渲染器错误。",
@@ -5325,6 +5360,51 @@
           "3b7ea51793": "清除搜索",
           "7f1c2e94a5": "搜索文本过长 — 看板未被筛选",
           "9a4d0f6b21": "过长"
+        },
+        "cloud": {
+          "sessions": {
+            "empty": "没有活跃的云端会话。",
+            "refresh": "刷新",
+            "stale": "显示的是上次已知状态。{{reason}}",
+            "state": {
+              "ended": "已结束",
+              "idle": "空闲",
+              "unverifiable": "无法确认",
+              "working": "工作中",
+              "blocked": "待批准"
+            },
+            "title": "云端会话",
+            "toggle": "切换云端会话",
+            "untitled": "未命名会话",
+            "failure": {
+              "rejected": "{{provider}} 拒绝了已保存的凭据。请在「设置 → 集成」中更新。",
+              "unreachable": "{{provider}} 当前不可达。检查网络后重试。",
+              "notConfigured": "请在「设置 → 集成」中连接 {{provider}}。",
+              "malformed": "{{provider}} 返回了异常响应。",
+              "unsupported": "此主机尚不支持云端智能体会话。",
+              "notFound": "该会话在 {{provider}} 上已不存在，很可能是在那里被删除了。"
+            },
+            "openConsole": "打开 {{provider}} 控制台",
+            "openSession": "打开 {{value0}}（{{value1}}）",
+            "outcome": {
+              "met": "已满足验收标准",
+              "notMet": "未满足验收标准"
+            },
+            "newSession": "新建云端会话",
+            "needYou": "{{value0}} 个待处理",
+            "moreActions": "更多云端会话操作",
+            "showFewer": "收起",
+            "showMore": "再显示 {{value0}} 个",
+            "search": "搜索云端会话",
+            "searchPlaceholder": "标题或会话 ID",
+            "clearSearch": "清除搜索",
+            "searching": "搜索中…",
+            "noMatch": "没有匹配的会话。",
+            "searchTruncated": "仅搜索了最近的会话；缩小关键词范围可更精确。",
+            "retry": "重试",
+            "allProviders": "全部",
+            "filterProvider": "只显示 {{provider}} 会话"
+          }
         }
       },
       "shared": {
@@ -6321,7 +6401,9 @@
           "3ba07f933b": "连接 Orca 可用于浏览任务并启动带链接上下文工作区的议题追踪器。",
           "70e885705b": "任务提供商",
           "1683acbac4": "连接 Orca 可用于 pull request、merge request、检查和评审状态的源代码主机。",
-          "298c65ecac": "评审提供商"
+          "298c65ecac": "评审提供商",
+          "cloudAgents": "云端智能体",
+          "cloudAgentsDescription": "连接托管的智能体运行环境，Orca 可将其与本地智能体一同监控。"
         },
         "KagiSessionLinkForm": {
           "92f0b4e472": "清除",
@@ -10396,6 +10478,66 @@
           "saveFailed": "无法保存可见性默认设置。",
           "updateServer": "请更新此服务器以配置来源默认设置。",
           "updateServerDefaults": "请更新此服务器以配置可见性默认设置。"
+        },
+        "qoder": {
+          "cloud": {
+            "credentials": {
+              "dialog": {
+                "accessToken": "访问令牌（PAT 或 SAT）",
+                "baseUrl": "API 基础地址（可选）",
+                "cancel": "取消",
+                "connect": "连接",
+                "connectFailed": "连接失败",
+                "description": "使用 Qoder 个人或服务账号令牌，在 Orca 中监控云端智能体会话。Orca 会在保存前进行验证。",
+                "docsLink": "Qoder Cloud Agents 快速开始",
+                "environmentManaged": "Qoder Cloud 已通过 ORCA_QODER_* 环境变量配置，且环境变量优先。取消设置后才能在 Orca 中保存凭据。",
+                "hint": "Qoder CN 与 Qoder 国际版是相互独立的产品，令牌不通用；请将基础地址设置为签发令牌的控制台所对应的地址。",
+                "storageNote": "在操作系统钥匙串可用时以加密方式保存在本机。ORCA_QODER_* 环境变量始终优先于此处保存的内容。",
+                "title": "连接 Qoder Cloud Agents",
+                "verifying": "正在验证…",
+                "useCn": "使用 Qoder CN 端点"
+              }
+            },
+            "integration": {
+              "card": {
+                "connect": "连接",
+                "connected": "已连接",
+                "defaultHost": "api.qoder.com",
+                "description": "监控运行在 Qoder 托管云沙箱中的智能体会话。",
+                "disconnect": "断开 Qoder Cloud",
+                "disconnectFailed": "无法移除已保存的 Qoder Cloud 凭据。",
+                "edit": "编辑令牌",
+                "envManaged": "已通过环境变量配置。取消设置 ORCA_QODER_* 后即可在 Orca 中管理此凭据。",
+                "notConfigured": "使用 Qoder 个人或服务账号令牌连接。也可使用 ORCA_QODER_ACCESS_TOKEN，且其优先。",
+                "notConnected": "未连接",
+                "statusLoadFailed": "无法检查是否已保存 Qoder Cloud 凭据。",
+                "storedCredential": "已保存在本机的 Orca 中。会话将显示在侧边栏的“云端会话”下。"
+              }
+            }
+          }
+        },
+        "cloudAgent": {
+          "integration": {
+            "description": "查看运行在 {{provider}} 托管云沙箱中的 Agent 会话。",
+            "connected": "已连接",
+            "notConnected": "未连接",
+            "connect": "连接",
+            "edit": "编辑令牌",
+            "disconnect": "断开 {{provider}}",
+            "disconnectFailed": "无法删除已保存的 {{provider}} 凭据。",
+            "statusLoadFailed": "无法检查已保存的 {{provider}} 凭据。",
+            "envManaged": "已通过环境变量配置。取消 {{vars}} 后即可在 Orca 中管理此凭据。",
+            "stored": "已保存在本机 Orca 中。它的会话会和其他云会话一起显示。",
+            "notConfigured": "使用 {{provider}} 的 API key 连接。",
+            "dialogTitle": "连接 {{provider}}",
+            "tokenLabel": "API key",
+            "baseUrlLabel": "API 基础地址（可选）",
+            "storageNote": "当系统钥匙串可用时，会加密保存在本机。",
+            "connectFailed": "无法用 {{provider}} 验证该 key。",
+            "cancel": "取消",
+            "verifying": "验证中...",
+            "vendorCli": "使用本机已登录的 {{provider}} CLI 凭据。"
+          }
         }
       },
       "right": {
@@ -14254,6 +14396,22 @@
           "noProjects": "{host} 上未设置任何项目。请在该主机上添加一个，或选择另一台主机。",
           "updateRequired": "更新 {hosts} 上的 Orca 服务器即可在其中存储自动化。",
           "move": "保存后会在 {host} 上创建此自动化，并删除原有自动化及其运行历史。"
+        },
+        "cloud": {
+          "schedule": {
+            "host": "云端",
+            "openConsole": "在服务商控制台中打开 {{value0}}",
+            "noRuns": "尚无运行记录。",
+            "openSession": "打开会话"
+          },
+          "detail": {
+            "schedule": "计划",
+            "agent": "智能体",
+            "environment": "环境",
+            "nextRuns": "接下来",
+            "prompt": "提示词",
+            "runs": "最近运行"
+          }
         }
       },
       "agent": {
@@ -14640,6 +14798,121 @@
         "description": "在侧边栏中将此工作区嵌套到另一个工作树下。不会更改基础分支。",
         "searchPlaceholder": "搜索工作树...",
         "noMatches": "无匹配项。"
+      },
+      "cloud": {
+        "sessions": {
+          "drawer": {
+            "title": "云端会话",
+            "untitled": "未命名会话",
+            "blocked": "等待批准",
+            "working": "工作中",
+            "idle": "空闲",
+            "openConsole": "在 Qoder Cloud 中打开",
+            "close": "关闭",
+            "live": "● 实时",
+            "reconnecting": "重连中…",
+            "blockedHintReadOnly": "智能体正在等待一个工具调用获得批准。请在服务商控制台中批准；Orca 以只读方式显示此会话。",
+            "unsupported": "此主机尚不能读取云端会话记录。请更新与之配对的主机上的 Orca，或在服务商控制台中打开该会话。",
+            "archive": "归档会话",
+            "archiveConfirm": "归档",
+            "archiveConfirmShort": "确认",
+            "actions": "会话操作",
+            "archiveTitle": "归档此会话？",
+            "archiveBody": "服务商将不再接受该会话的新任务；历史记录仍可在 Qoder 控制台中查看。",
+            "archiveCancel": "取消",
+            "ended": "已结束",
+            "retry": "重试"
+          },
+          "outcome": {
+            "pending": "未开始",
+            "running": "正在朝验收标准推进",
+            "evaluating": "评分中",
+            "needsRevision": "需要修订",
+            "satisfied": "已满足验收标准",
+            "maxIterations": "未满足：已达迭代上限",
+            "failed": "无法满足",
+            "interrupted": "已中断",
+            "progress": "第 {{value0}} / {{value1}} 轮",
+            "label": "验收标准"
+          },
+          "artifact": {
+            "open": "打开 {{value0}}"
+          },
+          "artifacts": {
+            "label": "交付的文件",
+            "count": "已交付 {{value0}} 个文件"
+          },
+          "controls": {
+            "busy": "会话正在处理一轮对话。请等待其完成或取消。",
+            "dismiss": "忽略",
+            "approvePrompt": "批准待处理的工具调用，让智能体继续。",
+            "deny": "拒绝",
+            "approve": "批准",
+            "placeholder": "向此云端会话发送后续消息",
+            "busyPlaceholder": "智能体正在工作；请等待或取消本轮",
+            "messageLabel": "发往云端会话的消息",
+            "cancel": "取消本轮",
+            "send": "发送消息",
+            "closed": "此会话不再接受消息。",
+            "blockedPlaceholder": "先批准上方的工具调用，会话才能继续",
+            "unverifiedPlaceholder": "会话状态尚未确认，暂时不能发送消息",
+            "endedPlaceholder": "会话已结束，无法再发送消息"
+          },
+          "new": {
+            "title": "新建云端会话",
+            "description": "智能体在服务商管理的沙箱中运行。Orca 只负责观察；本机不执行任何操作。",
+            "agent": "智能体",
+            "environment": "环境",
+            "name": "名称（可选）",
+            "prompt": "提示词",
+            "promptPlaceholder": "你希望智能体做什么？",
+            "advanced": "仓库、记忆、验收标准",
+            "cancel": "取消",
+            "create": "启动会话",
+            "loading": "正在读取目录…",
+            "notConfigured": "请先在“设置 → 集成”中连接 Qoder Cloud Agents。",
+            "promptFailed": "会话已创建，但首轮未启动：{{value0}}",
+            "mountRepo": "挂载 GitHub 仓库",
+            "repoUrl": "仓库地址",
+            "mountPath": "挂载路径",
+            "repoToken": "GitHub 令牌",
+            "repoTokenNote": "建议使用细粒度令牌：Contents 只读；仅当需要智能体推送时再给 Pull requests 写权限。Orca 仅在本会话请求中使用它。",
+            "memory": "记忆库",
+            "readWrite": "读写",
+            "readOnly": "只读",
+            "vaults": "凭据库",
+            "grade": "按验收标准评分结果",
+            "rubric": "验收标准",
+            "rubricPlaceholder": "- /data/report.md 存在\n- 每个结论都有来源",
+            "iterations": "最大迭代次数",
+            "promptNote": "如果下面挂载了仓库，智能体会在仓库中工作。",
+            "repoTokenLink": "创建令牌",
+            "searchMemory": "搜索记忆库",
+            "memoryAccessLabel": "{{value0}} 访问权限",
+            "version": "v{{value0}}",
+            "repoTokenPlaceholder": "ghp_…",
+            "repoUrlPlaceholder": "https://github.com/your-org/your-repo",
+            "mountPathPlaceholder": "/data/workspace/your-repo",
+            "network": "网络 {{value0}}",
+            "packageManagersAllowed": "允许安装依赖",
+            "packageManagersBlocked": "禁止安装依赖",
+            "allowedHosts": "{{value0}} 个允许的主机"
+          },
+          "unsupportedHost": "此主机尚不支持云端智能体会话。",
+          "model": {
+            "title": "本会话使用的模型",
+            "auto": "自动",
+            "switch": "切换模型，当前为 {{model}}",
+            "loading": "正在加载模型…",
+            "empty": "该账号没有可用模型。",
+            "vision": "视觉",
+            "effort": "推理强度",
+            "useDefault": "使用模型默认设置"
+          },
+          "failure": {
+            "generic": "{{provider}} 当前不可达。检查网络后重试。"
+          }
+        }
       }
     },
     "i18n": {
@@ -14814,7 +15087,16 @@
         "allow": "允许",
         "deny": "拒绝"
       },
-      "launchPromptNotDelivered": "未送达 — 请检查终端"
+      "launchPromptNotDelivered": "未送达 — 请检查终端",
+      "notices": {
+        "acceptanceCriteria": "验收标准",
+        "acceptanceCriteriaLimit": "最多 {{value0}} 轮",
+        "outcomeIteration": "第 {{value0}} 轮",
+        "cloudSessionError": "会话错误",
+        "cloudSessionErrorExhausted": "不会自动重试",
+        "cloudSessionUpdated": "智能体配置已更新",
+        "cloudSessionUpdatedTools": "{{value0}} 个工具"
+      }
     },
     "tab": {
       "bar": {

@@ -45,6 +45,7 @@ type NewWorkspaceComposerProjectSectionProps = Pick<
   sshStatusLabel: string
   connectButtonLabel: string
   selectedProjectName: string
+  onCloudTask?: () => void
 }
 
 export function NewWorkspaceComposerProjectSection({
@@ -77,7 +78,8 @@ export function NewWorkspaceComposerProjectSection({
   onConnectSelectedRepo,
   sshStatusLabel,
   connectButtonLabel,
-  selectedProjectName
+  selectedProjectName,
+  onCloudTask
 }: NewWorkspaceComposerProjectSectionProps): React.JSX.Element {
   return (
     <div className="space-y-1">
@@ -140,7 +142,7 @@ export function NewWorkspaceComposerProjectSection({
           ) : null}
         </div>
       </div>
-      {shouldShowRunTargetPicker ? (
+      {shouldShowRunTargetPicker || onCloudTask ? (
         <div className="space-y-1 pt-3">
           <label className="block min-w-0 truncate text-xs font-medium text-muted-foreground">
             {translate('auto.components.NewWorkspaceComposerCard.runOn', 'Run on')}
@@ -156,6 +158,7 @@ export function NewWorkspaceComposerProjectSection({
             onAddRemoteServer={handleAddRemoteServer}
             onConnectHost={handleConnectRunTargetHost}
             onSetLocation={handleSetLocation}
+            onCloudTask={onCloudTask}
           />
           {ephemeralVmRecipeError ? (
             <p className="whitespace-pre-line text-[11px] text-destructive">

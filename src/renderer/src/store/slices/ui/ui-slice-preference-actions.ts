@@ -275,6 +275,16 @@ export function createUiPreferenceActions(set: UISliceSet, get: UISliceGet): Par
 
     agentDashboardDrawerOpen: false,
     setAgentDashboardDrawerOpen: (open) => set({ agentDashboardDrawerOpen: open }),
+    openCloudSessionId: null,
+    openCloudSessionProvider: null,
+    cloudSessionLaunchWarning: null,
+    setOpenCloudSessionId: (sessionId, provider = 'qoder-cloud') =>
+      set({
+        openCloudSessionId: sessionId,
+        cloudSessionLaunchWarning: null,
+        openCloudSessionProvider: sessionId ? provider : null,
+        ...(sessionId ? { activeView: 'terminal', activePendingCreationId: null } : {})
+      }),
     statusBarVisible: true,
     setStatusBarVisible: (v) => {
       window.api.ui.set({ statusBarVisible: v }).catch(console.error)

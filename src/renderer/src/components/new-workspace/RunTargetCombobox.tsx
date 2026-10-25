@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react'
+import { Cloud } from 'lucide-react'
 import { Popover, PopoverContent } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 import { translate } from '@/i18n/i18n'
@@ -36,6 +37,7 @@ type RunTargetComboboxProps = {
   onAddSshHost?: () => void
   onConnectHost?: (option: NeedsSetupProjectHostOption) => Promise<void> | void
   onSetLocation?: (option: NeedsSetupProjectHostOption) => void
+  onCloudTask?: () => void
 }
 
 const ROOT_ATTRIBUTE = 'data-run-target-combobox-root'
@@ -59,25 +61,29 @@ export default function RunTargetCombobox({
   onAddRemoteServer,
   onAddSshHost,
   onConnectHost,
-  onSetLocation
+  onSetLocation,
+  onCloudTask
 }: RunTargetComboboxProps): React.JSX.Element {
   const [submenu, setSubmenu] = useState<'recipes' | 'add-host' | null>(null)
   // Track in-flight connects per host so one stalling connect never blocks the others.
   const [connectingHostIds, setConnectingHostIds] = useState<ReadonlySet<string>>(() => new Set())
 
   const hasAddHost = Boolean(onAddSshHost || onAddRemoteServer)
+  const hasCloud = Boolean(onCloudTask)
   const deriveRowKeys = useCallback(
     (query: string): string[] =>
-      buildRunTargetRows({ hostOptions, recipes, query, hasAddHost }).rows.map((row) => row.key),
-    [hasAddHost, hostOptions, recipes]
+      buildRunTargetRows({ hostOptions, recipes, query, hasAddHost, hasCloud }).rows.map(
+        (row) => row.key
+      ),
+    [hasAddHost, hasCloud, hostOptions, recipes]
   )
   const combobox = useTypeAheadCombobox(deriveRowKeys)
   const { query, setQuery, open, setOpen, armedKey, arm, moveArm, inputRef, listId, setListNode } =
     combobox
 
   const { rows, matchedRecipes } = useMemo(
-    () => buildRunTargetRows({ hostOptions, recipes, query, hasAddHost }),
-    [hasAddHost, hostOptions, query, recipes]
+    () => buildRunTargetRows({ hostOptions, recipes, query, hasAddHost, hasCloud }),
+    [hasAddHost, hasCloud, hostOptions, query, recipes]
   )
   const readyHostOptions = useMemo(
     () => hostOptions.filter((option) => option.kind === 'ready'),
@@ -157,6 +163,11 @@ export default function RunTargetCombobox({
       if (!row) {
         return
       }
+      if (row.kind === 'cloud') {
+        close()
+        onCloudTask?.()
+        return
+      }
       if (row.kind === 'ready') {
         selectHost(row.option.id)
         return
@@ -168,7 +179,7 @@ export default function RunTargetCombobox({
       }
       setSubmenu(row.kind === 'recipes' ? 'recipes' : 'add-host')
     },
-    [rows, selectHost, setLocation]
+    [rows, selectHost, setLocation, close, onCloudTask]
   )
 
   const handleKeyDown = useCallback(
@@ -287,6 +298,21 @@ export default function RunTargetCombobox({
               }
               const isArmed = armedRow?.key === row.key
               const optionId = isArmed ? `${listId}-armed` : undefined
+              if (row.kind === 'cloud') {
+                return (
+                  <RunTargetRow
+                    key={row.key}
+                    icon={<Cloud className="size-4" />}
+                    label={translate('cloudTasks.cloudRunTarget', 'Cloud agent')}
+                    detail={translate('cloudTasks.cloudRunDetail', 'Run without a local workspace')}
+                    armed={isArmed}
+                    current={false}
+                    optionId={optionId}
+                    onArm={() => arm(row.key)}
+                    onCommit={() => activate(row.key)}
+                  />
+                )
+              }
               if (row.kind === 'ready') {
                 return (
                   <RunTargetRow

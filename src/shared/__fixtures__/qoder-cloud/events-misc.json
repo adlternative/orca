@@ -1,0 +1,96 @@
+{
+  "data": [
+    {
+      "error": {
+        "mcp_server_name": "github",
+        "message": "MCP server 'github' tool discovery failed: mcp connect github (https://api.githubcopilot.com/mcp/): mcp auth failed (HTTP 401): calling \"initialize\": sending \"initialize\": Unauthorized",
+        "retry_status": {
+          "type": "exhausted"
+        },
+        "type": "mcp_authentication_failed_error"
+      },
+      "id": "evt_fixture000020",
+      "processed_at": "2026-10-22T14:50:33.595402879Z",
+      "type": "session.error"
+    },
+    {
+      "id": "evt_fixture000021",
+      "input": {
+        "command": "command -v android-calendar; date '+%Y-%m-%d %Z'; android-calendar --help",
+        "tool_title": "检查日历工具及今天的日期"
+      },
+      "name": "nm_shell_execute",
+      "processed_at": "2026-10-21T05:22:19.004707Z",
+      "type": "agent.custom_tool_use"
+    },
+    {
+      "content": [
+        {
+          "text": "/usr/local/bin/android-calendar\n2026-10-21 LCL\nandroid-calendar — list, create, update, delete events; query free/busy\n                                    (mirrors apple-calendar)\n\nUsage:\n  android-calendar                  Same as `list` (default subcommand)\n  android-calendar list [--today | --days N | --start S --end E]\n                        [--limit N] [--calendar NAME]\n  android-calendar create --title T --start S [--end E]\n                         [--notes N] [--location L] [--all-day]\n                         [--alarm <minutes>] [--calendar NAME | --calendar-id ID]\n  android-calendar update --id <event_id> [--title ...] [--start ...] [--end ...]\n                         [--notes ...] [--location ...] [--alarm <minutes>]\n                         [--calendar NAME | --calendar-id ID]\n  android-calendar delete --id <event_id>\n  android-calendar freebusy --start <ISO> --end <ISO>\n  android-calendar calendars             List writable calendars (debugging)\n\nDates accept ISO 8601 (YYYY-MM-DDThh:mm[:ss][Z|±HH:MM]) or relative\nshorthand (-7d, -2h, +30m). YYYY-MM-DD is treated as midnight local.\n\nAliases for backwards compatibility:\n  --max ↔ --limit\n  --description ↔ --notes\n\nErrors return JSON: {\"error\":\"...\",\"message\":\"...\"}.",
+          "type": "text"
+        }
+      ],
+      "custom_tool_use_id": "evt_fixture000021",
+      "id": "evt_fixture000022",
+      "processed_at": "2026-10-21T05:22:20.016349Z",
+      "session_thread_id": "sthr_fixture000002",
+      "type": "user.custom_tool_result"
+    },
+    {
+      "id": "evt_fixture000023",
+      "processed_at": "2026-10-17T15:07:02.889329Z",
+      "type": "agent.thread_context_compacted",
+      "usage": {
+        "credits": 10.02
+      }
+    },
+    {
+      "agent": {
+        "description": "",
+        "id": "agent_fixture000004",
+        "mcp_servers": [],
+        "model": {
+          "effective_context_window": 200000,
+          "id": "dfmodel"
+        },
+        "multiagent": null,
+        "name": "Browser1",
+        "skills": [],
+        "system": "",
+        "tools": [
+          {
+            "default_config": {
+              "permission_policy": {
+                "type": "always_allow"
+              }
+            },
+            "enabled_tools": [
+              "Bash",
+              "Read",
+              "Write",
+              "Edit",
+              "Glob",
+              "Grep",
+              "WebFetch",
+              "WebSearch",
+              "ImageSearch",
+              "ImageGen",
+              "DeliverArtifacts"
+            ],
+            "type": "agent_toolset_20260401"
+          },
+          {
+            "type": "browser_toolset_20260714"
+          }
+        ],
+        "type": "agent",
+        "version": 1
+      },
+      "id": "evt_fixture000024",
+      "processed_at": "2026-10-22T06:52:38.073965394Z",
+      "type": "session.updated"
+    }
+  ],
+  "next_page": null,
+  "has_more": false
+}
